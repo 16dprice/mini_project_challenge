@@ -26,6 +26,11 @@ nav a {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+.user-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 .card {
   display: flex;
   flex-direction: column;
