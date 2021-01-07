@@ -25,7 +25,7 @@ export default class Projects extends Component {
         return (
             <div>
                 <div>Projects</div>
-                <div className="project-grid">
+                <div className="card-grid">
                     {this.getNewProjectCard()}
                     {this.getProjectCards()}
                 </div>

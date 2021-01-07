@@ -25,7 +25,7 @@ export default class Users extends Component {
         return (
             <div>
                 <div>Users</div>
-                <div className="user-grid">
+                <div className="card-grid">
                     {this.getNewUserCard()}
                     {this.getUserCards()}
                 </div>

@@ -21,12 +21,7 @@ nav a {
   text-decoration: none;
 }
 
-.project-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-.user-grid {
+.card-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
