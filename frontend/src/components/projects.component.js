@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Card from './card.component';
 import Project from './project.component';
 import NewProject from "./newProject.component";
+import ProjectFilter from "./projectFilter.component";
 
 import ProjectApiAdapter from '../api/projectApiAdapter';
 
@@ -24,7 +25,10 @@ export default class Projects extends Component {
     render() {
         return (
             <div>
-                <div>Projects</div>
+                <div>
+                    <span>Projects</span>
+                    <ProjectFilter />
+                </div>
                 <div className="card-grid">
                     {this.getNewProjectCard()}
                     {this.getProjectCards()}

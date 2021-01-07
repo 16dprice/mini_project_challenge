@@ -21,6 +21,10 @@ nav a {
   text-decoration: none;
 }
 
+.project-filter {
+  float: right;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
