@@ -1,7 +1,7 @@
 import Navbar from './components/navbar.component';
 import Projects from './components/projects.component';
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 function App() {
     return (
@@ -9,9 +9,7 @@ function App() {
             <div>
                 <Navbar/>
             </div>
-            <div>
-                <Route path="/projects" component={Projects} />
-            </div>
+            <Route path="/projects" component={Projects}/>
         </Router>
     );
 }

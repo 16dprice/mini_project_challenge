@@ -7,7 +7,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+nav {
+  width: 20%;
+}
+
+nav > ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card__header {
+  color: red;
 }

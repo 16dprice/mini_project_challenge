@@ -4,7 +4,11 @@ export default class Card extends Component {
 
     render() {
         return (
-            <div>{this.props.header} - {this.props.subHeader}</div>
+            <div className="card">
+                <span className="card__header">{this.props.header}</span>
+                <span className="card__subHeader">{this.props.subHeader}</span>
+                <span>Select</span>
+            </div>
         );
     }
 

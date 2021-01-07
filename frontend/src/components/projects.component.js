@@ -11,14 +11,17 @@ export default class Projects extends Component {
 
     getProjectCards() {
         return this.getProjectObjects().map(project => {
-            return <Card header={project.bookName} subHeader={project.language} completed={project.completed} />
+            return <Card header={project.bookName} subHeader={project.language} completed={project.completed}/>
         });
     }
 
     render() {
         return (
             <div>
-                {this.getProjectCards()}
+                <div>Projects</div>
+                <div className="project-grid">
+                    {this.getProjectCards()}
+                </div>
             </div>
         )
     }
