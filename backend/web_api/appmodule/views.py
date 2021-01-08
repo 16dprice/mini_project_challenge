@@ -1,7 +1,8 @@
 from rest_framework.decorators import api_view
-from .models import Project
+from .models import *
 from .serializers import ProjectSerializer
 from rest_framework.response import Response
+from rest_framework import status
 
 # Create your API controllers here.
 
@@ -14,12 +15,22 @@ def get_projects(request):
 
 @api_view(['GET'])
 def get_project(request, id):
-    project = Project.objects.filter(id=id).select_related('book', 'language').first()
-    serializer = ProjectSerializer(project)
-    return Response(serializer.data)
+    try:
+        project = Project.objects.select_related('book', 'language').get(id=id)
+        serializer = ProjectSerializer(project)
+        return Response(serializer.data)
+    except:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 @api_view(['POST'])
 def create_project(request):
-    # TODO: create a project and return the new project info
-    pass
+    bookSlug = request.data['bookSlug']
+    languageSlug = request.data['languageSlug']
+    
+    book = Book.objects.get(slug=bookSlug)
+    language = Language.objects.get(slug=languageSlug)
+
+    Project.objects.create(book=book, language=language)
+
+    return Response()
