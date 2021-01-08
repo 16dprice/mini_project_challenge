@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+
+import { connect } from 'react-redux';
+
 import Card from './card.component';
 import Project from './project.component';
 import NewProject from "./newProject.component";
@@ -6,26 +9,47 @@ import ProjectFilter from "./projectFilter.component";
 
 import ProjectApiAdapter from '../api/projectApiAdapter';
 
-export default class Projects extends Component {
+class ProjectsList extends Component {
 
-    getProjectObjects() {
+    getNewProjectCard() {
+        return <Card key="new" content={ <NewProject /> } />;
+    }
+
+    getAllProjectObjects() {
         return ProjectApiAdapter.projectList();
     }
 
-    getNewProjectCard() {
-        return <Card content={ <NewProject /> } />;
+    getCompletedProjectObjects() {
+        return ProjectApiAdapter.completedProjectList();
+    }
+
+    getUncompletedProjectObjects() {
+        return ProjectApiAdapter.uncompletedProjectList();
+    }
+
+    getProjectCardsFromProjectObjects(projectObjects) {
+        return projectObjects.map(project => {
+            return <Card key={project.id} content={ <Project project={project} /> } />
+        });
     }
 
     getProjectCards() {
-        return this.getProjectObjects().map(project => {
-            return <Card content={ <Project project={project} /> } />
-        });
+        switch(this.props.status) {
+            case 'completed':
+                return this.getProjectCardsFromProjectObjects(this.getCompletedProjectObjects());
+            case 'uncompleted':
+                return this.getProjectCardsFromProjectObjects(this.getUncompletedProjectObjects());
+            case 'all':
+            default:
+                return this.getProjectCardsFromProjectObjects(this.getAllProjectObjects());
+        }
     }
 
     render() {
         return (
             <div>
                 <div>
+                    <span>{this.props.status}</span>
                     <span>Projects</span>
                     <ProjectFilter />
                 </div>
@@ -38,3 +62,7 @@ export default class Projects extends Component {
     }
 
 }
+
+export default connect(
+    state => ({ status: state.projectStatus })
+)(ProjectsList);
