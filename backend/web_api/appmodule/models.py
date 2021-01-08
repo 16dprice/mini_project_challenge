@@ -4,8 +4,8 @@ from django.db import models
 
 class User(models.Model):
     username = models.TextField()
-    firstname = models.TextField()
-    lastname = models.TextField()
+    first_name = models.TextField()
+    last_name = models.TextField()
 
 class Language(models.Model):
     slug = models.CharField(max_length=30, primary_key=True)
