@@ -5,7 +5,7 @@ import NewUser from './newUser.component';
 
 import UserApiAdapter from "../api/userApiAdapter";
 
-export default class Users extends Component {
+export default class UsersList extends Component {
 
     getUserObjects() {
         return UserApiAdapter.userList();
