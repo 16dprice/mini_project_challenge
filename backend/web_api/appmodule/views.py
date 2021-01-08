@@ -25,7 +25,7 @@ def projects(request):
         language = Language.objects.get(slug=languageSlug)
         Project.objects.create(book=book, language=language)
 
-        return Response()
+        return Response(status=status_code.HTTP_200_OK)
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def project_detail(request, id):
@@ -51,13 +51,13 @@ def project_detail(request, id):
         
         project.save()
 
-        return Response("project: " + id, status=status_code.HTTP_200_OK)
+        return Response(status=status_code.HTTP_200_OK)
 
     elif request.method == 'DELETE':
         project = Project.objects.get(id=id)
         project.delete()
 
-        return Response(status=status_code.HTTP_200_OK)        
+        return Response(status=status_code.HTTP_200_OK)
 
 
 @api_view(['POST', 'DELETE'])
