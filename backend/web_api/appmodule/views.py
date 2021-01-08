@@ -7,14 +7,14 @@ from rest_framework.response import Response
 
 @api_view(['GET'])
 def get_projects(request):
-    projects = Project.objects.all().order_by('id')
+    projects = Project.objects.all().select_related('book', 'language').order_by('id')
     serializer = ProjectSerializer(projects, many=True)
     return Response(serializer.data)
 
 
 @api_view(['GET'])
 def get_project(request, id):
-    project = Project.objects.filter(id=id).first()
+    project = Project.objects.filter(id=id).select_related('book', 'language').first()
     serializer = ProjectSerializer(project)
     return Response(serializer.data)
 

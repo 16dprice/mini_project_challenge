@@ -6,3 +6,4 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = ['id', 'completed', 'book', 'language', 'contributors']
+        depth = 2
