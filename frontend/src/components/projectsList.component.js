@@ -49,7 +49,6 @@ class ProjectsList extends Component {
         return (
             <div>
                 <div>
-                    <span>{this.props.status}</span>
                     <span>Projects</span>
                     <ProjectFilter />
                 </div>
