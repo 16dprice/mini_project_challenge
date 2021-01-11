@@ -85,16 +85,13 @@ def project_detail(request, id):
 @api_view(['GET', 'POST', 'DELETE'])
 def project_contributors(request, projectId):
     """
-    Get a list of available contributors; 
+    Get a list of contributors of a project; 
     Add or remove contributor(s) of a project
     """
     if request.method == 'GET':
         project = Project.objects.get(id=projectId)
-        contributorIdList = project.contributors.values_list(
-            'id', flat=True
-        )
-        availableContributors = User.objects.exclude(pk__in=contributorIdList)
-        serializerObject = UserSerializer(availableContributors, many=True)
+        projectContributors = project.contributors.all()
+        serializerObject = UserSerializer(projectContributors, many=True)
         return Response(serializerObject.data)
 
     elif request.method == 'POST':
@@ -139,3 +136,29 @@ def users(request):
             username=username,first_name=firstName, last_name=lastName
         )
         return Response(status=status_code.HTTP_200_OK)
+
+
+@api_view(['GET', 'PUT'])
+def user_info(request, id):
+    if request.method == 'GET':
+        user = User.objects.get(id=id)
+        serializerObject = UserSerializer(user)
+        return Response(serializerObject.data)
+
+    elif request.method == 'PUT':
+        user = User.objects.get(id=id)
+        firstName = request.data['firstName']
+        lastName = request.data['lastName']
+
+        user.first_name = firstName
+        user.last_name = lastName
+
+        return Response(status=HTTP_200_OK)
+
+
+@api_view(['GET'])
+def get_users_available_to_project(request, projectId):
+        project = Project.objects.get(id=projectId)
+        availableContributors = User.objects.difference(project.contributors.all())
+        serializerObject = UserSerializer(availableContributors, many=True)
+        return Response(serializerObject.data)
