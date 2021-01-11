@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 export default class User extends Component {
 
@@ -6,23 +7,21 @@ export default class User extends Component {
         super(props);
 
         this.state = {
-            username: this.props.user.username,
-            firstName: this.props.user.firstName,
-            lastName: this.props.user.lastName,
+            user: this.props.user,
         }
     }
 
     render() {
         return (
             <>
-                <span className="card__header">{this.state.username}</span>
+                <span className="card__header">{this.state.user.username}</span>
                 <span className="card__subHeader">
-                    <div>{this.state.firstName}</div>
-                    <div>{this.state.lastName}</div>
+                    <div>{this.state.user.firstName}</div>
+                    <div>{this.state.user.lastName}</div>
                 </span>
-                <span>Select</span>
+                <Link to={`/edit-user/${this.state.user.id}`}>Select</Link>
             </>
         );
     }
-
+    
 }

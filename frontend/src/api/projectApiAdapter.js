@@ -2,22 +2,58 @@ export default class ProjectApiAdapter {
     static projectList() {
         return [
             {
-                id: 1,
+                id: "1",
                 bookName: "Mark",
                 language: "English",
-                completed: true
+                completed: true,
+                contributors: [
+                    {
+                        id: "1",
+                        username: "lindavasquez",
+                        firstName: "Linda",
+                        lastName: "Vasquez"
+                    },
+                    {
+                        id: "2",
+                        username: "herbert123",
+                        firstName: "Herbert",
+                        lastName: "Fletcher"
+                    },
+                ]
             },
             {
-                id: 2,
+                id: "2",
                 bookName: "1 Peter",
                 language: "English",
-                completed: false
+                completed: false,
+                contributors: [
+                    {
+                        id: "1",
+                        username: "lindavasquez",
+                        firstName: "Linda",
+                        lastName: "Vasquez"
+                    }
+                ]
             },
             {
-                id: 3,
+                id: "3",
                 bookName: "Genesis",
                 language: "Espanol",
-                completed: true
+                completed: true,
+                contributors: [
+                    {
+                        id: "1",
+                        username: "lindavasquez",
+                        firstName: "Linda",
+                        lastName: "Vasquez"
+                    },
+                    {
+                        id: "3",
+                        username: "zjohnson",
+                        firstName: "Zachary",
+                        lastName: "Johnson"
+                    },
+                ]
             }
         ];
     }
@@ -28,5 +64,17 @@ export default class ProjectApiAdapter {
 
     static uncompletedProjectList() {
         return this.projectList().filter(project => !project.completed);
+    }
+
+    static getProjectsByUserId(userId) {
+        return this.projectList().filter(
+            project => {
+                let projectHasUserAsContributor = false;
+                project.contributors.forEach((item, index) => {
+                    if(item.id === userId) projectHasUserAsContributor = true;
+                });
+                return projectHasUserAsContributor;
+            }
+        );
     }
 }

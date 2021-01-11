@@ -38,3 +38,16 @@ nav a {
 .card__header {
   color: red;
 }
+
+.user-details {
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+}
+
+.user-details__names {
+  border: solid;
+}
+
+.user-details__projects {
+  border: solid;
+}
