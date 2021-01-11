@@ -43,15 +43,6 @@ export default function NewUser() {
         setLastName('');
     };
 
-    useEffect(() => {
-        if(userName.length === 0 || firstName.length === 0 || lastName.length === 0) {
-            setSubmitEnabled(false);
-        } else {
-            setSubmitEnabled(true);
-        }
-    }, [userName, firstName, lastName]
-    );
-
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -66,6 +57,15 @@ export default function NewUser() {
         clearState();
         handleClose();
     };
+
+    useEffect(() => {
+            if(userName.length === 0 || firstName.length === 0 || lastName.length === 0) {
+                setSubmitEnabled(false);
+            } else {
+                setSubmitEnabled(true);
+            }
+        }, [userName, firstName, lastName]
+    );
 
     return (
         <>
