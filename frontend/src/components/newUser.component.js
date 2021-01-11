@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -27,6 +27,7 @@ export default function NewUser() {
     const [userName, setUserName] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [submitEnabled, setSubmitEnabled] = useState(false);
 
     const handleOpen = () => {
         setOpen(true);
@@ -41,6 +42,15 @@ export default function NewUser() {
         setFirstName('');
         setLastName('');
     };
+
+    useEffect(() => {
+        if(userName.length === 0 || firstName.length === 0 || lastName.length === 0) {
+            setSubmitEnabled(false);
+        } else {
+            setSubmitEnabled(true);
+        }
+    }, [userName, firstName, lastName]
+    );
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -78,7 +88,7 @@ export default function NewUser() {
                         <div><input type="text" onChange={e => setLastName(e.target.value)} value={lastName}/></div>
                         <div>
                             <button onClick={handleCancel}>Cancel</button>
-                            <input type="submit" value="Submit"/>
+                            <input type="submit" value="Submit" disabled={!submitEnabled}/>
                         </div>
                     </form>
                 </Fade>
