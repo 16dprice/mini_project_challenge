@@ -186,3 +186,10 @@ def languages(request):
     serializerObject = LanguageSerializer(languages, many=True)
     
     return Response(serializerObject.data)
+
+
+@api_view(['GET'])
+def books(request):
+    bookList = Book.objects.all()
+    serializerObject = BookSerializer(bookList, many=True)
+    return Response(serializerObject.data)

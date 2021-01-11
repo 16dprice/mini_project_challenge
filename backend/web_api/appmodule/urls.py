@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'users/(?P<id>\d+)/?$', views.user_info),
     url(r'users/(?P<id>\d+)/projects/?$', views.user_projects),
     url(r'languages/$', views.languages),
+    url(r'books/$', views.books),
 ]
