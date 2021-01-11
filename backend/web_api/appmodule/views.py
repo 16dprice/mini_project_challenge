@@ -1,4 +1,5 @@
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 from .models import *
 from .serializers import *
 from . import constant
@@ -48,7 +49,7 @@ def projects(request):
         return Response(status=status_code.HTTP_200_OK)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PATCH', 'DELETE'])
 def project_detail(request, id):
     """ 
     Get a project, or update its status, or delete one
@@ -63,7 +64,7 @@ def project_detail(request, id):
         except:
             return Response(status=status_code.HTTP_404_NOT_FOUND)
 
-    elif request.method == 'PUT':
+    elif request.method == 'PATCH':
         completionStatus = request.data['completed']
         project = Project.objects.get(id=id)
 
@@ -148,7 +149,7 @@ def users(request):
         return Response(status=status_code.HTTP_200_OK)
 
 
-@api_view(['GET', 'PUT'])
+@api_view(['GET', 'PATCH'])
 def user_info(request, id):
     """
     Get or Update user info
@@ -158,7 +159,7 @@ def user_info(request, id):
         serializerObject = UserSerializer(user)
         return Response(serializerObject.data)
 
-    elif request.method == 'PUT':
+    elif request.method == 'PATCH':
         user = User.objects.get(id=id)
         firstName = request.data['firstName']
         lastName = request.data['lastName']
