@@ -39,7 +39,7 @@ class UserInfo(APIView):
     def patch(self, request, id):
         user = User.objects.get(id=id)
         firstName = request.data.get('firstName', None)
-        lastName = request.data('lastName', None)
+        lastName = request.data.get('lastName', None)
 
         if firstName != None and lastName != None:
             user.first_name = firstName
