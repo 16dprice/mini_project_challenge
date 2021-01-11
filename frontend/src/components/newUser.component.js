@@ -31,6 +31,7 @@ export default function NewUser() {
     const handleOpen = () => {
         setOpen(true);
     };
+
     const handleClose = () => {
         setOpen(false);
     };
@@ -39,7 +40,7 @@ export default function NewUser() {
         setUserName('');
         setFirstName('');
         setLastName('');
-    }
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -47,14 +48,14 @@ export default function NewUser() {
         UserApiAdapter.createNewUser(userName, firstName, lastName);
         clearState();
         handleClose();
-    }
+    };
 
     const handleCancel = (event) => {
         event.preventDefault();
 
         clearState();
         handleClose();
-    }
+    };
 
     return (
         <>
@@ -84,5 +85,4 @@ export default function NewUser() {
             </Modal>
         </>
     );
-
 }
