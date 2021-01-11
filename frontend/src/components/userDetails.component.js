@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 
 import UserApiAdapter from "../api/userApiAdapter";
 import ProjectApiAdapter from "../api/projectApiAdapter";
-import Card from "./card.component";
-import User from "./user.component";
 
 export default class UserDetails extends Component {
 
@@ -36,22 +34,28 @@ export default class UserDetails extends Component {
 
     getProjectsContributedTo() {
         return this.state.projectsContributedTo.map(project => {
-            return <div key={project.id}>{project.bookName}</div>
+            return <div key={project.id}><u>{project.language} - {project.bookName}</u></div>
         });
     }
 
     render() {
         return (
-            <div className="user-details">
-                <div className="user-details__names">
-                    <span className="user-details__username">{this.state.user.username}</span>
-                    <span className="user-details__first-and-last-names">
-                        <div><input type="text" readOnly={false} value={this.state.user.firstName} onChange={this.handleFirstNameChange}/></div>
-                        <div><input type="text" readOnly={false} value={this.state.user.lastName} onChange={this.handleLastNameChange}/></div>
-                    </span>
-                </div>
-                <div className="user-details__projects">
-                    {this.getProjectsContributedTo()}
+            <div>
+                <div><u>Users</u> &#8594; {this.state.user.username}</div>
+                <div className="user-details">
+                    <div className="user-details__names">
+                        <span className="user-details__username">{this.state.user.username}</span>
+                        <span className="user-details__first-and-last-names">
+                            <div><input type="text" readOnly={false} value={this.state.user.firstName}
+                                    onChange={this.handleFirstNameChange}/></div>
+                            <div><input type="text" readOnly={false} value={this.state.user.lastName}
+                                    onChange={this.handleLastNameChange}/></div>
+                        </span>
+                        <button>Edit</button>
+                    </div>
+                    <div className="user-details__projects">
+                        {this.getProjectsContributedTo()}
+                    </div>
                 </div>
             </div>
         );
