@@ -18,4 +18,8 @@ export default class UserApiAdapter {
             },
         ];
     }
+
+    static createNewUser(userName, firstName, lastName) {
+        console.log(`User ${firstName} ${lastName} created as @${userName}`);
+    }
 }
