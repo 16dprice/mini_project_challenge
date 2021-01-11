@@ -12,12 +12,12 @@ export default class UsersList extends Component {
     }
 
     getNewUserCard() {
-        return <Card content={ <NewUser /> } />;
+        return <Card key="new" content={ <NewUser /> } />;
     }
 
     getUserCards() {
         return this.getUserObjects().map(user => {
-            return <Card content={ <User user={user} /> } />
+            return <Card key={user.username} content={ <User user={user} /> } />
         });
     }
 
