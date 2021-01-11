@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -23,10 +23,10 @@ const useStyles = makeStyles((theme) => ({
 export default function NewUser() {
 
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-    const [userName, setUserName] = React.useState('');
-    const [firstName, setFirstName] = React.useState('');
-    const [lastName, setLastName] = React.useState('');
+    const [open, setOpen] = useState(false);
+    const [userName, setUserName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
 
     const handleOpen = () => {
         setOpen(true);
@@ -78,7 +78,7 @@ export default function NewUser() {
                         <div><input type="text" onChange={e => setLastName(e.target.value)} value={lastName}/></div>
                         <div>
                             <button onClick={handleCancel}>Cancel</button>
-                            <input type="submit" value="Submit" />
+                            <input type="submit" value="Submit"/>
                         </div>
                     </form>
                 </Fade>
