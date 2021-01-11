@@ -152,8 +152,9 @@ def user_info(request, id):
 
         user.first_name = firstName
         user.last_name = lastName
+        user.save()
 
-        return Response(status=HTTP_200_OK)
+        return Response(status=status_code.HTTP_200_OK)
 
 
 @api_view(['GET'])
