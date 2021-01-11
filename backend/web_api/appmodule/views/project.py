@@ -34,14 +34,20 @@ class ProjectList(APIView):
 
 
     def post(self, request):
-        bookSlug = request.data['bookSlug']
-        languageSlug = request.data['languageSlug']
+        bookSlug = request.data.get('bookSlug', None)
+        languageSlug = request.data.get('languageSlug', None)
 
-        book = Book.objects.get(slug=bookSlug)
-        language = Language.objects.get(slug=languageSlug)
-        Project.objects.create(book=book, language=language)
+        if bookSlug != None and languageSlug != None:
+            try:
+                book = Book.objects.get(slug=bookSlug)
+                language = Language.objects.get(slug=languageSlug)
+                Project.objects.create(book=book, language=language)
+                
+                return Response(status=status_code.HTTP_201_CREATED)
+            except:
+                pass
 
-        return Response(status=status_code.HTTP_200_OK)
+        return Response(status=status_code.HTTP_400_BAD_REQUEST)
 
 
 class ProjectDetail(APIView):
@@ -57,21 +63,26 @@ class ProjectDetail(APIView):
             return Response(status=status_code.HTTP_404_NOT_FOUND)
 
     def patch(self, request, id):
-        completionStatus = request.data['completed']
-        project = Project.objects.get(id=id)
-
-        if completionStatus == "true":
-            project.completed = True
-        else:
-            project.completed = False
-
-        project.save()
+        try:
+            completionStatus = request.data.get('completed', None)
+            project = Project.objects.get(id=id)
+            if completionStatus == "true":
+                project.completed = True
+                project.save()
+            elif completionStatus == 'false':
+                project.completed = False
+                project.save()
+        except:
+            return Response(status=status_code.HTTP_400_BAD_REQUEST)
 
         return Response(status=status_code.HTTP_200_OK)
 
     def delete(self, request, id):
-        project = Project.objects.get(id=id)
-        project.delete()
+        try:
+            project = Project.objects.get(id=id)
+            project.delete()
+        except:
+            return Response(status=status_code.HTTP_400_BAD_REQUEST)
 
         return Response(status=status_code.HTTP_200_OK)
 
@@ -79,38 +90,55 @@ class ProjectDetail(APIView):
 class ProjectContributors(APIView):
 
     def get(self, request, projectId):
-        project = Project.objects.get(id=projectId)
-        projectContributors = project.contributors.all()
-        serializerObject = UserSerializer(projectContributors, many=True)
+        try:
+            project = Project.objects.get(id=projectId)
+            projectContributors = project.contributors.all()
+            serializerObject = UserSerializer(projectContributors, many=True)
 
-        return Response(serializerObject.data)
+            return Response(serializerObject.data)
+        except:
+            return Response(status=status_code.HTTP_404_NOT_FOUND)
 
     def post(self, request, projectId):
-        contributorList = request.data['contributors']
+        contributorList = request.data.get('contributors', None)
+        if contributorList != None:
+            try:
+                contributorIdList = json.loads(contributorList)
+                contributors = User.objects.filter(pk__in=contributorIdList)
+                project = Project.objects.get(id=projectId)
+                for user in contributors:
+                    project.contributors.add(user)
+                
+                return Response(status=status_code.HTTP_200_OK)
+            except:
+                pass
 
-        contributorIdList = json.loads(contributorList)
-        contributors = User.objects.filter(pk__in=contributorIdList)
-        project = Project.objects.get(id=projectId)
-        for user in contributors:
-            project.contributors.add(user)
-
-        return Response(status=status_code.HTTP_200_OK)
+        return Response(status=status_code.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, projectId):
-        contributorId = request.data['contributorId']
-
-        contributor = User.objects.get(id=contributorId)
-        project = Project.objects.get(id=projectId)
-        project.contributors.remove(contributor)
-
-        return Response(status=status_code.HTTP_200_OK)
+        contributorId = request.data.get('contributorId', None)
+        if contributorId != None:
+            try:
+                contributor = User.objects.get(id=contributorId)
+                project = Project.objects.get(id=projectId)
+                project.contributors.remove(contributor)
+                
+                return Response(status=status_code.HTTP_200_OK)
+            except:
+                pass
+        
+        return Response(status=status_code.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
 def get_users_available_to_project(request, projectId):
-    project = Project.objects.get(id=projectId)
-    availableContributors = User.objects.difference(
-        project.contributors.all())
-    serializerObject = UserSerializer(availableContributors, many=True)
+    try:
+        project = Project.objects.get(id=projectId)
+        availableContributors = User.objects.difference(
+            project.contributors.all()
+        )
+        serializerObject = UserSerializer(availableContributors, many=True)
 
-    return Response(serializerObject.data)
+        return Response(serializerObject.data)
+    except:
+        return Response(status=status_code.HTTP_404_NOT_FOUND)
