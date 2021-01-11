@@ -41,8 +41,8 @@ def project_detail(request, id):
             project = Project.objects.select_related(
                 'book', 'language'
             ).get(id=id)
-            serializer = ProjectSerializer(project)
-            return Response(serializer.data)
+            serializerObject = ProjectSerializer(project)
+            return Response(serializerObject.data)
         except:
             return Response(status=status_code.HTTP_404_NOT_FOUND)
 
@@ -69,7 +69,8 @@ def project_detail(request, id):
 @api_view(['GET', 'POST', 'DELETE'])
 def project_contributors(request, projectId):
     """
-    Get a list of available contributors; add or remove contributor(s) of a project
+    Get a list of available contributors; 
+    Add or remove contributor(s) of a project
     """
     if request.method == 'GET':
         project = Project.objects.get(id=projectId)
@@ -77,18 +78,17 @@ def project_contributors(request, projectId):
             'id', flat=True
         )
         availableContributors = User.objects.exclude(pk__in=contributorIdList)
-        serializer = UserSerializer(availableContributors, many=True)
-        return Response(serializer.data)
+        serializerObject = UserSerializer(availableContributors, many=True)
+        return Response(serializerObject.data)
 
     elif request.method == 'POST':
         contributorList = request.data['contributors']
 
         contributorIdList = json.loads(contributorList)
-        contributors = User.objects.filter(id in contributorIdList)
-        project = Project.objects.select_related(
-            'contributors'
-        ).get(id=projectId)
-        project.contributors.bulk_create(contributors)
+        contributors = User.objects.filter(pk__in=contributorIdList)
+        project = Project.objects.get(id=projectId)
+        for user in contributors:
+            project.contributors.add(user)
 
         return Response(status=status_code.HTTP_200_OK)
 
@@ -101,4 +101,25 @@ def project_contributors(request, projectId):
         ).get(id=projectId)
         project.contributors.remove(contributor)
 
+        return Response(status=status_code.HTTP_200_OK)
+
+
+@api_view(['GET', 'POST'])
+def users(request):
+    """
+    Get a list of users or Create a new user
+    """
+    if request.method == 'GET':
+        userList = User.objects.all()
+        serializerObject = UserSerializer(userList, many=True)
+        return Response(serializerObject.data)
+
+    elif request.method == 'POST':
+        username = request.data['username']
+        firstName = request.data['firstName']
+        lastName = request.data['lastName']
+
+        User.objects.create(
+            username=username,first_name=firstName, last_name=lastName
+        )
         return Response(status=status_code.HTTP_200_OK)
