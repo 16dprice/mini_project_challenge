@@ -1,21 +1,15 @@
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
-from .models import *
-from .serializers import *
-from . import constant
+from ..models import Project, User, Book, Language
+from ..serializers import ProjectSerializer, UserSerializer
 from rest_framework.response import Response
 from rest_framework import status as status_code
+from rest_framework.views import APIView
 import json
 
-# Create your API controllers here.
+class ProjectList(APIView):
 
-
-@api_view(['GET', 'POST'])
-def projects(request):
-    """ 
-    Get a list of projects or create a new one 
-    """
-    if request.method == 'GET':
+    def get(self, request):
         statusFilter = request.query_params.get('completed', None)
         project = []
 
@@ -24,7 +18,7 @@ def projects(request):
             projects = Project.objects.select_related(
                 'book', 'language'
             ).filter(completed=True).order_by('id')
-        
+
         elif statusFilter == 'false':
             projects = Project.objects.select_related(
                 'book', 'language'
@@ -32,13 +26,14 @@ def projects(request):
 
         else:
            projects = Project.objects.select_related(
-                'book', 'language'
-            ).order_by('id')
-            
+               'book', 'language'
+           ).order_by('id')
+
         serializerObject = ProjectSerializer(projects, many=True)
         return Response(serializerObject.data)
 
-    elif request.method == 'POST':
+
+    def post(self, request):
         bookSlug = request.data['bookSlug']
         languageSlug = request.data['languageSlug']
 
@@ -49,12 +44,9 @@ def projects(request):
         return Response(status=status_code.HTTP_200_OK)
 
 
-@api_view(['GET', 'PATCH', 'DELETE'])
-def project_detail(request, id):
-    """ 
-    Get a project, or update its status, or delete one
-    """
-    if request.method == 'GET':
+class ProjectDetail(APIView):
+
+    def get(self, request, id):
         try:
             project = Project.objects.select_related(
                 'book', 'language'
@@ -64,7 +56,7 @@ def project_detail(request, id):
         except:
             return Response(status=status_code.HTTP_404_NOT_FOUND)
 
-    elif request.method == 'PATCH':
+    def patch(self, request, id):
         completionStatus = request.data['completed']
         project = Project.objects.get(id=id)
 
@@ -77,26 +69,23 @@ def project_detail(request, id):
 
         return Response(status=status_code.HTTP_200_OK)
 
-    elif request.method == 'DELETE':
+    def delete(self, request, id):
         project = Project.objects.get(id=id)
         project.delete()
 
         return Response(status=status_code.HTTP_200_OK)
 
 
-@api_view(['GET', 'POST', 'DELETE'])
-def project_contributors(request, projectId):
-    """
-    Get a list of contributors of a project; 
-    Add or remove contributor(s) of a project
-    """
-    if request.method == 'GET':
+class ProjectContributors(APIView):
+
+    def get(self, request, projectId):
         project = Project.objects.get(id=projectId)
         projectContributors = project.contributors.all()
         serializerObject = UserSerializer(projectContributors, many=True)
+
         return Response(serializerObject.data)
 
-    elif request.method == 'POST':
+    def post(self, request, projectId):
         contributorList = request.data['contributors']
 
         contributorIdList = json.loads(contributorList)
@@ -107,13 +96,11 @@ def project_contributors(request, projectId):
 
         return Response(status=status_code.HTTP_200_OK)
 
-    elif request.method == 'DELETE':
+    def delete(self, request, projectId):
         contributorId = request.data['contributorId']
 
         contributor = User.objects.get(id=contributorId)
-        project = Project.objects.select_related(
-            'contributors'
-        ).get(id=projectId)
+        project = Project.objects.get(id=projectId)
         project.contributors.remove(contributor)
 
         return Response(status=status_code.HTTP_200_OK)
@@ -125,72 +112,5 @@ def get_users_available_to_project(request, projectId):
     availableContributors = User.objects.difference(
         project.contributors.all())
     serializerObject = UserSerializer(availableContributors, many=True)
-    return Response(serializerObject.data)
 
-
-@api_view(['GET', 'POST'])
-def users(request):
-    """
-    Get a list of users or Create a new user
-    """
-    if request.method == 'GET':
-        userList = User.objects.all()
-        serializerObject = UserSerializer(userList, many=True)
-        return Response(serializerObject.data)
-
-    elif request.method == 'POST':
-        username = request.data['username']
-        firstName = request.data['firstName']
-        lastName = request.data['lastName']
-
-        User.objects.create(
-            username=username,first_name=firstName, last_name=lastName
-        )
-        return Response(status=status_code.HTTP_200_OK)
-
-
-@api_view(['GET', 'PATCH'])
-def user_info(request, id):
-    """
-    Get or Update user info
-    """
-    if request.method == 'GET':
-        user = User.objects.get(id=id)
-        serializerObject = UserSerializer(user)
-        return Response(serializerObject.data)
-
-    elif request.method == 'PATCH':
-        user = User.objects.get(id=id)
-        firstName = request.data['firstName']
-        lastName = request.data['lastName']
-
-        user.first_name = firstName
-        user.last_name = lastName
-        user.save()
-
-        return Response(status=status_code.HTTP_200_OK)
-
-
-@api_view(['GET'])
-def user_projects(request, userId):
-    user = User.objects.get(id=userId)
-    serializerObject = ProjectSerializer(user.project_set.all(), many=True)
-    return Response(serializerObject.data)
-
-
-
-@api_view(['GET'])
-def languages(request):
-    index = int(request.query_params.get('index', 0))
-    upperLimit = index + constant.LANGUAGE_TAKE_LIMIT
-    languages = Language.objects.all()[index:upperLimit]
-    serializerObject = LanguageSerializer(languages, many=True)
-    
-    return Response(serializerObject.data)
-
-
-@api_view(['GET'])
-def books(request):
-    bookList = Book.objects.all()
-    serializerObject = BookSerializer(bookList, many=True)
     return Response(serializerObject.data)
