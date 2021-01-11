@@ -117,6 +117,15 @@ def project_contributors(request, projectId):
         return Response(status=status_code.HTTP_200_OK)
 
 
+@api_view(['GET'])
+def get_users_available_to_project(request, projectId):
+    project = Project.objects.get(id=projectId)
+    availableContributors = User.objects.difference(
+        project.contributors.all())
+    serializerObject = UserSerializer(availableContributors, many=True)
+    return Response(serializerObject.data)
+
+
 @api_view(['GET', 'POST'])
 def users(request):
     """
@@ -140,6 +149,9 @@ def users(request):
 
 @api_view(['GET', 'PUT'])
 def user_info(request, id):
+    """
+    Get or Update user info
+    """
     if request.method == 'GET':
         user = User.objects.get(id=id)
         serializerObject = UserSerializer(user)
@@ -158,8 +170,7 @@ def user_info(request, id):
 
 
 @api_view(['GET'])
-def get_users_available_to_project(request, projectId):
-        project = Project.objects.get(id=projectId)
-        availableContributors = User.objects.difference(project.contributors.all())
-        serializerObject = UserSerializer(availableContributors, many=True)
-        return Response(serializerObject.data)
+def user_projects(request, userId):
+    user = User.objects.get(id=userId)
+    serializerObject = ProjectSerializer(user.project_set.all(), many=True)
+    return Response(serializerObject.data)
