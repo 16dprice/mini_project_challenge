@@ -14,11 +14,27 @@ def projects(request):
     Get a list of projects or create a new one 
     """
     if request.method == 'GET':
-        projects = Project.objects.select_related(
-            'book', 'language'
-        ).order_by('id')
-        serializer = ProjectSerializer(projects, many=True)
-        return Response(serializer.data)
+        statusFilter = request.query_params.get('completed', None)
+        project = []
+
+        #  filter by completion status
+        if statusFilter == 'true':
+            projects = Project.objects.select_related(
+                'book', 'language'
+            ).filter(completed=True).order_by('id')
+        
+        elif statusFilter == 'false':
+            projects = Project.objects.select_related(
+                'book', 'language'
+            ).filter(completed=False).order_by('id')
+
+        else:
+           projects = Project.objects.select_related(
+                'book', 'language'
+            ).order_by('id')
+            
+        serializerObject = ProjectSerializer(projects, many=True)
+        return Response(serializerObject.data)
 
     elif request.method == 'POST':
         bookSlug = request.data['bookSlug']
