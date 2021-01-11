@@ -6,7 +6,9 @@ from rest_framework.response import Response
 from rest_framework import status as status_code
 
 class UserList(APIView):
-
+    """
+    Get a list of users or Create a new user
+    """
     def get(self, request):
         userList = User.objects.all()
         serializerObject = UserSerializer(userList, many=True)
@@ -27,7 +29,9 @@ class UserList(APIView):
             return Response(status=status_code.HTTP_400_BAD_REQUEST)
 
 class UserInfo(APIView):
-
+    """
+    Get or Update user info
+    """
     def get(self, request, id):
         try:
             user = User.objects.get(id=id)
@@ -52,6 +56,9 @@ class UserInfo(APIView):
 
 
 class UserProject(APIView):
+    """
+    Get a list of projects that the user is the contributor
+    """
     def get(self, request, id):
         try:
             user = User.objects.get(id=id)

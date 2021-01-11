@@ -8,7 +8,9 @@ from rest_framework.views import APIView
 import json
 
 class ProjectList(APIView):
-
+    """ 
+    Get a list of projects or create a new one 
+    """
     def get(self, request):
         statusFilter = request.query_params.get('completed', None)
         project = []
@@ -51,7 +53,9 @@ class ProjectList(APIView):
 
 
 class ProjectDetail(APIView):
-
+    """ 
+    Get a project, or update its status, or delete one
+    """
     def get(self, request, id):
         try:
             project = Project.objects.select_related(
@@ -88,7 +92,10 @@ class ProjectDetail(APIView):
 
 
 class ProjectContributors(APIView):
-
+    """
+    Get a list of contributors of a project; 
+    Add or remove contributor(s) of a project
+    """
     def get(self, request, projectId):
         try:
             project = Project.objects.get(id=projectId)
