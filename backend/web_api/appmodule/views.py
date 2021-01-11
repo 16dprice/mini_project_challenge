@@ -1,6 +1,7 @@
 from rest_framework.decorators import api_view
 from .models import *
 from .serializers import *
+from . import constant
 from rest_framework.response import Response
 from rest_framework import status as status_code
 import json
@@ -173,4 +174,15 @@ def user_info(request, id):
 def user_projects(request, userId):
     user = User.objects.get(id=userId)
     serializerObject = ProjectSerializer(user.project_set.all(), many=True)
+    return Response(serializerObject.data)
+
+
+
+@api_view(['GET'])
+def languages(request):
+    index = int(request.query_params.get('index', 0))
+    upperLimit = index + constant.LANGUAGE_TAKE_LIMIT
+    languages = Language.objects.all()[index:upperLimit]
+    serializerObject = LanguageSerializer(languages, many=True)
+    
     return Response(serializerObject.data)

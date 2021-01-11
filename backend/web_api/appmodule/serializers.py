@@ -1,6 +1,10 @@
 from rest_framework import serializers
+from .models import *
 
-from .models import Project, User
+class LanguageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Language
+        fields = ['slug', 'original_name', 'anglicized_name']
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
