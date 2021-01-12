@@ -72,6 +72,10 @@
     font-weight: bold;
 }
 
+.new-card:hover {
+    cursor: pointer;
+}
+
 .new-card i.material-icons {
     font-size: 36px;
     margin-right: 0;
