@@ -15,6 +15,11 @@
   border-radius: 10px;
 }
 
+.card:hover {
+    background: #fbfeec;
+    box-shadow: 0 0 5px 3px #89b8d3;
+}
+
 .card__header {
   color: red;
   font-size: large;
@@ -36,4 +41,19 @@
     text-transform: UPPERCASE;
     font-weight: bold;
     font-size: large;
+}
+
+.new-user-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: #1a87ff;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.new-user-card i {
+    font-size: 36px;
 }

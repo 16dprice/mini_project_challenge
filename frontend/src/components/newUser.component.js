@@ -69,8 +69,10 @@ export default function NewUser() {
 
     return (
         <>
-            <span>##User Image##</span>
-            <button onClick={handleOpen}>New User</button>
+            <span className="new-user-card">
+                <i className="material-icons">person_add</i>
+                <a onClick={handleOpen}>New User</a>
+            </span>
             <Modal
                 aria-labelledby="new-user-modal-title"
                 className={classes.modal}
