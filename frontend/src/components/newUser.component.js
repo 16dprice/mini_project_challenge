@@ -100,7 +100,7 @@ export default function NewUser() {
                         </div>
                         <div className="form-control-group">
                             <button className="form-button" onClick={handleCancel}>
-                                <i class="material-icons">clear</i>Cancel
+                                <i className="material-icons">clear</i>Cancel
                             </button>
                             <input id="submitButton" className="form-button" type="submit" value="Create" disabled={!submitEnabled}/>
                         </div>
