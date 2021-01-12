@@ -5,8 +5,10 @@ export default class NewProject extends Component {
     render() {
         return (
             <>
-                <span>##Book Image##</span>
-                <span>New Project</span>
+                <span className="new-card">
+                    <i className="material-icons">book</i>
+                    <a>New Project</a>
+                </span>
             </>
         );
     }

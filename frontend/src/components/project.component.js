@@ -14,9 +14,15 @@ export default class Project extends Component {
     render() {
         return (
             <>
-                <span className="card__header">{this.state.bookName}</span>
-                <span className="card__subHeader">{this.state.language}</span>
-                <Link to={`/edit-project/${this.state.project.id}`}>
+                <span className="card__header">
+                    <i className="material-icons">book</i>
+                    {this.state.project.bookName}
+                </span>
+                <span className="card__subHeader">
+                    <i className="material-icons">translate</i>
+                    {this.state.project.language}
+                </span>
+                <Link className="card__button" to={`/edit-project/${this.state.project.id}`}>
                     <i className="material-icons">touch_app</i>Select
                 </Link>
             </>
