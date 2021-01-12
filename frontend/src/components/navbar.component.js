@@ -6,11 +6,9 @@ export default class Navbar extends Component {
     render() {
         return (
             <nav>
-                <ul>
-                    <li><Link to="/projects">Mini Project</Link></li>
-                    <li><Link to="/projects">PROJECTS</Link></li>
-                    <li><Link to="/users">USERS</Link></li>
-                </ul>
+                <Link className="app-title" to="/projects">Mini Project</Link>
+                <Link className="nav-link" to="/projects">PROJECTS</Link>
+                <Link className="nav-link" to="/users">USERS</Link>
             </nav>
         )
     }

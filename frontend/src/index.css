@@ -7,18 +7,45 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-nav {
-  width: 20%;
-}
-
-nav > ul {
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
-}
-
 a {
   text-decoration: none;
+}
+
+a:visited {
+  color: unset;
+}
+
+nav {
+    height: 55px;
+    margin: 12px 6px;
+    display: flex;
+    box-shadow: 3px 5px 5px 2px #d2d2d2;
+    border-radius: 3px;
+}
+
+nav .app-title {
+    display: flex;
+    width: 15%;
+    height: 100%;
+    font-weight: bold;
+    font-size: 23px;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .nav-link {
+    display: flex;
+    width: 10%;
+    height: 100%;
+    min-width: 80px;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+}
+
+.nav-link.current {
+  color: white;
+  background-color: #1a87ff;
 }
 
 .project-filter {
