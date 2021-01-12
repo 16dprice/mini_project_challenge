@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ProjectApiAdapter from "../api/projectApiAdapter";
 import ProjectDescription from "./projectDescription.component";
 import ProjectContributors from "./projectContributors.component";
+import '../styles/project-detail.css'
 
 export default class ProjectDetails extends Component {
 
@@ -19,7 +20,7 @@ export default class ProjectDetails extends Component {
         return (
             <div>
                 <div><u>Projects</u> &#8594; {this.state.project.bookName}</div>
-                <div className="project-details">
+                <div className="project-details__container">
                     <ProjectDescription project={this.state.project}/>
                     <ProjectContributors project={this.state.project} />
                 </div>

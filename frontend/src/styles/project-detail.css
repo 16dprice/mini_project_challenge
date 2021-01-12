@@ -1,0 +1,63 @@
+.project-filter {
+  float: right;
+}
+
+.project-details__container {
+    display: flex;
+    margin: 15px;
+    min-height: 300px;
+}
+
+.project-details__project-description {
+    flex: 2;
+    font-size: x-large;
+    position: relative;
+    box-shadow: 0 0 5px 2px #cfd3d7;
+    border-radius: 10px;
+    margin-right: 12px;
+    padding: 25px 15px;
+}
+
+.project-details__project-description i {
+    margin-right: 8px;
+    position: relative;
+}
+
+.project-details__contributors {
+    flex: 3;
+    box-shadow: 0 0 5px 2px #cfd3d7;
+    border-radius: 10px;
+}
+
+.project-details__book-name {
+    display: flex;
+    align-items: center;
+    color: red;
+    font-size: xx-large;
+}
+
+.project-details__language {
+    display: flex;
+    align-items: center;
+}
+
+.project-details__edit-panel {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    left: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-details__completed-checkbox {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.project-details__edit-panel i {
+    font-size: 30px;
+}

@@ -55,13 +55,3 @@ nav .nav-link {
 .nav-link.current {
   color: white;
   background-color: #1a87ff;
-}
-
-.project-filter {
-  float: right;
-}
-
-.project-details {
-  display: grid;
-  grid-template-columns: 3fr 4fr;
-}

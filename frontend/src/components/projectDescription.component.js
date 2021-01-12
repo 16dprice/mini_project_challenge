@@ -25,15 +25,17 @@ export default class ProjectDescription extends Component {
     render() {
         return (
             <div className="project-details__project-description">
-                <div className="project-details__book-name">{this.state.project.bookName}</div>
-                <div className="project-details__language">{this.state.project.language}</div>
+                <div className="project-details__book-name">
+                    <i className="material-icons">book</i>{this.state.project.bookName}
+                </div>
+                <div className="project-details__language">
+                    <i className="material-icons">translate</i>{this.state.project.language}
+                </div>
                 <div className="project-details__edit-panel">
                     <span className="project-details__completed-checkbox">
                         <input type="checkbox" onClick={this.handleCompletedCheckbox}/>Completed
                     </span>
-                    <span className="project-details__delete-button">
-                        <button onClick={this.handleProjectDelete}>Delete</button>
-                    </span>
+                    <i className="material-icons" onClick={this.handleProjectDelete}>delete</i>
                 </div>
             </div>
         )
