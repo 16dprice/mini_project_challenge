@@ -5,11 +5,7 @@ import LanguageApiAdapter from "../../api/languageApiAdapter";
 
 class LanguageSelectPage extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
-    getLanguages() {
+    renderLanguages() {
         return LanguageApiAdapter.getLanguages().map(language => {
             return (
                 <div key={language.slug} onClick={() => this.props.selectLanguage(language.slug)}>
@@ -24,10 +20,10 @@ class LanguageSelectPage extends Component {
             <>
                 <div>Select Language (Currently selected: {this.props.selectedLanguage})</div>
                 <input type="text"/>
-                <div>{this.getLanguages()}</div>
+                <div>{this.renderLanguages()}</div>
                 <div>
                     <button onClick={() => this.props.deselectLanguage()}>Cancel</button>
-                    <button >Continue</button>
+                    <button onClick={this.props.goToBookSelectPage}>Continue</button>
                 </div>
             </>
         )
