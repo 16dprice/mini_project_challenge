@@ -5,9 +5,25 @@ export default class ProjectContributors extends Component {
     constructor(props) {
         super(props);
 
+        this.handleContributorDelete = this.handleContributorDelete.bind(this);
+
         this.state = {
             project: this.props.project
         }
+    }
+
+    handleContributorDelete(contributorToBeDeleted) {
+        // TODO: make delete request to delete contributor here
+        const newContributors = this.state.project.contributors.filter(
+            contributor => contributor.id !== contributorToBeDeleted.id
+        );
+
+        this.setState({
+            project: {
+                ...this.state.project,
+                contributors: newContributors
+            }
+        });
     }
 
     getContributorsList() {
@@ -15,7 +31,12 @@ export default class ProjectContributors extends Component {
             return (
                 <div key={contributor.username}>
                     <span><u>{contributor.firstName} {contributor.lastName}</u></span>
-                    <button style={{float: 'right'}}>Delete</button>
+                    <button
+                        onClick={() => this.handleContributorDelete(contributor)}
+                        style={{float: 'right'}}
+                    >
+                        Delete
+                    </button>
                 </div>
             )
         });

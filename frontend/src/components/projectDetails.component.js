@@ -20,7 +20,7 @@ export default class ProjectDetails extends Component {
             <div>
                 <div><u>Projects</u> &#8594; {this.state.project.bookName}</div>
                 <div className="project-details">
-                    <ProjectDescription project={this.state.project} />
+                    <ProjectDescription project={this.state.project}/>
                     <ProjectContributors project={this.state.project} />
                 </div>
             </div>
