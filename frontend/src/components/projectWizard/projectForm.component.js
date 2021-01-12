@@ -25,11 +25,10 @@ class ProjectForm extends Component {
     }
 
     render() {
-        const {onSubmit} = this.props;
         const {page} = this.state;
 
         return (
-            <div>
+            <div className={this.props.className}>
                 {page === 'languageSelectPage' &&
                 <div><LanguageSelectPage goToBookSelectPage={this.goToBookSelectPage}/></div>}
                 {page === 'bookSelectPage' &&
