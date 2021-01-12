@@ -5,8 +5,8 @@ import {projectCreationLanguageSelectReducer, projectCreationBookSelectReducer} 
 
 const rootReducer = combineReducers({
     projectStatus: projectStatusReducer,
-    languageSelection: projectCreationLanguageSelectReducer,
-    bookSelection: projectCreationBookSelectReducer
+    selectedLanguage: projectCreationLanguageSelectReducer,
+    selectedBook: projectCreationBookSelectReducer
 });
 
 export default rootReducer;
