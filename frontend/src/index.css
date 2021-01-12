@@ -15,6 +15,10 @@ a:visited {
   color: unset;
 }
 
+input:focus, form:focus {
+  outline: none;
+}
+
 nav {
     height: 55px;
     margin: 12px 6px;

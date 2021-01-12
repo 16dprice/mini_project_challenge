@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import '../styles/modal.css'
 
 import UserApiAdapter from "../api/userApiAdapter";
 
@@ -14,9 +15,9 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
+        borderRadius: 8,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
+        padding: theme.spacing(2, 4, 4),
     }
 }));
 
@@ -69,9 +70,9 @@ export default function NewUser() {
 
     return (
         <>
-            <span className="new-card">
+            <span className="new-card" onClick={handleOpen}>
                 <i className="material-icons">person_add</i>
-                <a onClick={handleOpen}>New User</a>
+                <a>New User</a>
             </span>
             <Modal
                 aria-labelledby="new-user-modal-title"
@@ -85,12 +86,23 @@ export default function NewUser() {
                 <Fade in={open}>
                     <form className={classes.paper} onSubmit={handleSubmit}>
                         <p id="new-user-modal-title">Create User</p>
-                        <div><input type="text" onChange={e => setUserName(e.target.value)} value={userName}/></div>
-                        <div><input type="text" onChange={e => setFirstName(e.target.value)} value={firstName}/></div>
-                        <div><input type="text" onChange={e => setLastName(e.target.value)} value={lastName}/></div>
                         <div>
-                            <button onClick={handleCancel}>Cancel</button>
-                            <input type="submit" value="Submit" disabled={!submitEnabled}/>
+                            <input type="text" onChange={e => setUserName(e.target.value)} 
+                                value={userName} placeholder="Enter username"/>
+                        </div>
+                        <div>
+                            <input type="text" onChange={e => setFirstName(e.target.value)} 
+                                value={firstName} placeholder="Enter First Name"/>
+                        </div>
+                        <div>
+                            <input type="text" onChange={e => setLastName(e.target.value)} 
+                                value={lastName} placeholder="Enter Last Name"/>
+                        </div>
+                        <div className="form-control-group">
+                            <button className="form-button" onClick={handleCancel}>
+                                <i class="material-icons">clear</i>Cancel
+                            </button>
+                            <input id="submitButton" className="form-button" type="submit" value="Create" disabled={!submitEnabled}/>
                         </div>
                     </form>
                 </Fade>
