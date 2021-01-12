@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {AddContributor} from "./addContributor.component";
 
 export default class ProjectContributors extends Component {
 
@@ -6,6 +7,7 @@ export default class ProjectContributors extends Component {
         super(props);
 
         this.handleContributorDelete = this.handleContributorDelete.bind(this);
+        this.handleContributorAdd = this.handleContributorAdd.bind(this);
 
         this.state = {
             project: this.props.project
@@ -17,6 +19,19 @@ export default class ProjectContributors extends Component {
         const newContributors = this.state.project.contributors.filter(
             contributor => contributor.id !== contributorToBeDeleted.id
         );
+
+        this.setState({
+            project: {
+                ...this.state.project,
+                contributors: newContributors
+            }
+        });
+    }
+
+    handleContributorAdd(newContributor) {
+        // TODO: make request to add newContributor to project
+        let newContributors = this.state.project.contributors;
+        newContributors.push(newContributor);
 
         this.setState({
             project: {
@@ -50,7 +65,7 @@ export default class ProjectContributors extends Component {
                     {this.getContributorsList()}
                 </div>
                 <div className="project-details__add-contributor">
-                    <button>Add Contributor</button>
+                    <AddContributor project={this.state.project} handleContributorAdd={this.handleContributorAdd} />
                 </div>
             </div>
         )
