@@ -17,26 +17,12 @@ nav > ul {
   list-style-type: none;
 }
 
-nav a {
+a {
   text-decoration: none;
 }
 
 .project-filter {
   float: right;
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-}
-
-.card__header {
-  color: red;
 }
 
 .user-details {

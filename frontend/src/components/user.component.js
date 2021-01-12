@@ -19,7 +19,9 @@ export default class User extends Component {
                     <div>{this.state.user.firstName}</div>
                     <div>{this.state.user.lastName}</div>
                 </span>
-                <Link to={`/edit-user/${this.state.user.id}`}>Select</Link>
+                <Link className="card__button" to={`/edit-user/${this.state.user.id}`}>
+                    <i className="material-icons">touch_app</i>Select
+                </Link>
             </>
         );
     }

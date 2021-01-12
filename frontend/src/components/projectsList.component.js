@@ -52,7 +52,7 @@ class ProjectsList extends Component {
                     <span>Projects</span>
                     <ProjectFilter />
                 </div>
-                <div className="card-grid">
+                <div className="card-container">
                     {this.getNewProjectCard()}
                     {this.getProjectCards()}
                 </div>
