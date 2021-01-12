@@ -41,4 +41,5 @@ input[type='text']:focus {
     width: 125px;
     height: 35px;
     border: none;
+    cursor: pointer;
 }

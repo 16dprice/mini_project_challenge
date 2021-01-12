@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import UserApiAdapter from "../api/userApiAdapter";
 import ProjectApiAdapter from "../api/projectApiAdapter";
-import {Button} from "@material-ui/core";
+import '../styles/user-detail.css'
 
 export default class UserDetails extends Component {
 
@@ -66,15 +66,24 @@ export default class UserDetails extends Component {
 
     getEditOrSaveButton() {
         if(this.state.editingUser) {
-            return <Button onClick={this.updateUser} disabled={!this.state.hasEditedUser}>Save</Button>
+            return (
+                <button onClick={this.updateUser} className="edit-button"
+                    disabled={!this.state.hasEditedUser}>
+                    <i className="material-icons">save</i>Save
+                </button>
+            );
         } else {
-            return <Button onClick={() => this.setState({editingUser: true})}>Edit</Button>
+            return (
+                <button className="edit-button" onClick={() => this.setState({editingUser: true})}>
+                    <i className="material-icons">edit</i>Edit
+                </button>
+            );
         }
     }
 
     getProjectsContributedTo() {
         return this.state.projectsContributedTo.map(project => {
-            return <div key={project.id}><u>{project.language} - {project.bookName}</u></div>
+            return <u key={project.id}>{project.language} - {project.bookName}</u>
         });
     }
 
@@ -82,14 +91,15 @@ export default class UserDetails extends Component {
         return (
             <div>
                 <div><u>Users</u> &#8594; {this.state.user.username}</div>
-                <div className="user-details">
+                <div className="user-details__container">
                     <div className="user-details__names">
                         <span className="user-details__username">{this.state.user.username}</span>
                         <span className="user-details__first-and-last-names">{this.getFirstAndLastNamesInputs()}</span>
                         {this.getEditOrSaveButton()}
                     </div>
                     <div className="user-details__projects">
-                        {this.getProjectsContributedTo()}
+                        <p className="user-projects__header">Projects</p>
+                        <div className="user-projects__link-container">{this.getProjectsContributedTo()}</div>
                     </div>
                 </div>
             </div>
