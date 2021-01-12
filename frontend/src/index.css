@@ -64,3 +64,8 @@ nav .nav-link {
 .user-details__projects {
   border: solid;
 }
+
+.project-details {
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+}

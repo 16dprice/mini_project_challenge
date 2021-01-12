@@ -7,9 +7,7 @@ export default class Project extends Component {
         super(props);
 
         this.state = {
-            bookName: this.props.project.bookName,
-            language: this.props.project.language,
-            completed: this.props.project.completed
+            project: this.props.project
         }
     }
 
