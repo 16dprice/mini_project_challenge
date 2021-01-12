@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 
 export default class Project extends Component {
 
@@ -6,18 +7,16 @@ export default class Project extends Component {
         super(props);
 
         this.state = {
-            bookName: this.props.project.bookName,
-            language: this.props.project.language,
-            completed: this.props.project.completed
+            project: this.props.project
         }
     }
 
     render() {
         return (
             <>
-                <span className="card__header">{this.state.bookName}</span>
-                <span className="card__subHeader">{this.state.language}</span>
-                <span>Select</span>
+                <span className="card__header">{this.state.project.bookName}</span>
+                <span className="card__subHeader">{this.state.project.language}</span>
+                <Link to={`/edit-project/${this.state.project.id}`}>Select</Link>
             </>
         );
     }

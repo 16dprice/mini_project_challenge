@@ -58,6 +58,10 @@ export default class ProjectApiAdapter {
         ];
     }
 
+    static getProjectById(id) {
+        return this.projectList().find(el => el.id === id);
+    }
+
     static completedProjectList() {
         return this.projectList().filter(project => project.completed);
     }
