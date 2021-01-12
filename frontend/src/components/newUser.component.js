@@ -69,7 +69,7 @@ export default function NewUser() {
 
     return (
         <>
-            <span className="new-user-card">
+            <span className="new-card">
                 <i className="material-icons">person_add</i>
                 <a onClick={handleOpen}>New User</a>
             </span>

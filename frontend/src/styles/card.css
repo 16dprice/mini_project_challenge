@@ -43,7 +43,7 @@
     font-size: large;
 }
 
-.new-user-card {
+.new-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,6 +54,6 @@
     font-weight: bold;
 }
 
-.new-user-card i {
+.new-card i {
     font-size: 36px;
 }
