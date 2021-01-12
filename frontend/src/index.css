@@ -53,5 +53,6 @@ nav .nav-link {
 }
 
 .nav-link.current {
-  color: white;
-  background-color: #1a87ff;
+    color: white;
+    background-color: #1a87ff;
+}
