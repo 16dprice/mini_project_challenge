@@ -26,8 +26,6 @@ SECRET_KEY = 'pks!)rw3ip7zmzwuji6zyyxz1fbb6zw-&=#o&(iz$caby0-8u_'
 DEBUG = True
 
 CORS_ORIGIN_WHITELIST = [
-    '0.0.0.0:8000'
-]
 ALLOWED_HOSTS = [] # docker: '0.0.0.0'
 
 # Application definition
