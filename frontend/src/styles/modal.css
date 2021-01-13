@@ -12,10 +12,9 @@ input[type='text']:focus {
     box-shadow: 0 0 3px;
 }
 
-#new-user-modal-title {
-    font-size: 26px;
-    font-weight: bold;
-    margin: 8px auto 20px;
+.modal-title {
+    font-size: 22px;
+    margin: 0 0 20px 0;
     text-align: center;
 }
 

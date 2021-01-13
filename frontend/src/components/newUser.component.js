@@ -85,7 +85,7 @@ export default function NewUser() {
             >
                 <Fade in={open}>
                     <form className={classes.paper} onSubmit={handleSubmit}>
-                        <p id="new-user-modal-title">Create User</p>
+                        <p id="new-user-modal-title" className="modal-title">Create User</p>
                         <div>
                             <input type="text" onChange={e => setUserName(e.target.value)} 
                                 value={userName} placeholder="Enter username"/>

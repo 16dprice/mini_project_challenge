@@ -67,7 +67,7 @@ export const AddContributor = props => {
                 <Fade in={open}>
                     <div className={classes.paper} style={{ borderRadius: '10px', border: 'none' }}>
                         <p id="add-contributor-modal-title" 
-                            className="project-contributors__header">Users</p>
+                            className="modal-title">Users</p>
                         <div className="available-contributors__container">
                             {getAvailableContributors()}
                         </div>

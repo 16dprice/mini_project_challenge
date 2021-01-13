@@ -4,6 +4,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import '../styles/create-project-wizard.css'
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.paper,
         borderRadius: 8,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 4),
+        padding: theme.spacing(2, 4, 2),
     }
 }));
 

@@ -8,7 +8,9 @@ class BookSelectPage extends Component {
     renderBooks() {
         return BookApiAdapter.getBooks().map(book => {
             return (
-                <div key={book.slug} onClick={() => this.props.selectBook(book.slug)}>
+                <div key={book.slug} 
+                    className="project-contributors__row"
+                    onClick={() => this.props.selectBook(book.slug)}>
                     {book.name} ({book.slug})
                 </div>
             )
@@ -18,13 +20,21 @@ class BookSelectPage extends Component {
     render() {
         return (
             <>
-                <div>Select Book (Currently selected: {this.props.selectedBook})</div>
-                <input type="text"/>
-                <div>{this.renderBooks()}</div>
-                <div>
-                    <button onClick={this.props.deselectBook}>Cancel</button>
-                    <button onClick={this.props.goToLanguageSelectPage}>Back</button>
-                    <button>Create</button>
+                <div className="modal-title">Select Book</div>
+                <input type="text" placeholder="Start typing a book name or code"/>
+                <div className="language-select-list">
+                    {this.renderBooks()}
+                </div>
+                <div className="form-control-group-right">
+                    <button className="form-button" onClick={this.props.deselectBook}>
+                        <i className="material-icons">clear</i>Cancel
+                    </button>
+                    <button className="form-button" onClick={this.props.goToLanguageSelectPage}>
+                        <i className="material-icons">arrow_back</i>Back
+                    </button>
+                    <button className="form-button">
+                        <i className="material-icons">arrow_forward</i>Create
+                    </button>
                 </div>
             </>
         )

@@ -8,8 +8,10 @@ class LanguageSelectPage extends Component {
     renderLanguages() {
         return LanguageApiAdapter.getLanguages().map(language => {
             return (
-                <div key={language.slug} onClick={() => this.props.selectLanguage(language.slug)}>
-                    {language.original_name} {language.slug}
+                <div key={language.slug} 
+                    onClick={() => this.props.selectLanguage(language.slug)}
+                    className="project-contributors__row">
+                    {language.original_name} ({language.slug})
                 </div>
             )
         });
@@ -18,12 +20,16 @@ class LanguageSelectPage extends Component {
     render() {
         return (
             <>
-                <div>Select Language (Currently selected: {this.props.selectedLanguage})</div>
-                <input type="text"/>
-                <div>{this.renderLanguages()}</div>
-                <div>
-                    <button onClick={() => this.props.deselectLanguage()}>Cancel</button>
-                    <button onClick={this.props.goToBookSelectPage}>Continue</button>
+                <p className="modal-title">Select Language</p>
+                <input type="text" placeholder="Start typing a language name or code"/>
+                <div className="language-select-list">{this.renderLanguages()}</div>
+                <div className="form-control-group-right">
+                    <button className="form-button" onClick={() => this.props.deselectLanguage()}>
+                            <i className="material-icons">clear</i>Cancel
+                    </button>
+                    <button className="form-button" onClick={this.props.goToBookSelectPage}>
+                        <i className="material-icons">arrow_forward</i>Continue
+                    </button>
                 </div>
             </>
         )
