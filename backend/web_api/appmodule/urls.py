@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^users/?$', views.UserList.as_view()),
     url(r'^users/(?P<id>\d+)/?$', views.UserInfo.as_view()),
     url(r'^users/(?P<id>\d+)/projects/?$', views.UserProject.as_view()),
-    url(r'^languages/$', views.languages),
+    url(r'^languages/?$', views.languages),
+    url(r'^languages/?(\?filter=\w+)$', views.languages),
     url(r'^books/$', views.books),
 ]
