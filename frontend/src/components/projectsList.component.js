@@ -48,7 +48,7 @@ class ProjectsList extends Component {
     render() {
         return (
             <div>
-                <div>
+                <div className="breadcrumb-filter-group">
                     <span>Projects</span>
                     <ProjectFilter />
                 </div>
