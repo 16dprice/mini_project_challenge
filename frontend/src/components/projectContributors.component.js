@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {AddContributor} from "./addContributor.component";
+import { Link } from 'react-router-dom';
 
 export default class ProjectContributors extends Component {
 
@@ -45,10 +46,12 @@ export default class ProjectContributors extends Component {
         return this.state.project.contributors.map(contributor => {
             return (
                 <div key={contributor.username} className="project-contributors__row">
-                    <u>{contributor.firstName} {contributor.lastName}</u>
-                        <i className="material-icons delete actionIcon" 
-                            onClick={() => this.handleContributorDelete(contributor)}>delete
-                        </i>
+                    <Link to={`/edit-user/${contributor.id}`}>
+                        <u>{contributor.firstName} {contributor.lastName}</u>
+                    </Link>
+                    <i className="material-icons delete actionIcon" 
+                        onClick={() => this.handleContributorDelete(contributor)}>delete
+                    </i>
                 </div>
             )
         });

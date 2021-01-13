@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import { Link } from 'react-router-dom';
 import UserApiAdapter from "../api/userApiAdapter";
 import ProjectApiAdapter from "../api/projectApiAdapter";
 import '../styles/user-detail.css'
@@ -83,7 +83,11 @@ export default class UserDetails extends Component {
 
     getProjectsContributedTo() {
         return this.state.projectsContributedTo.map(project => {
-            return <u key={project.id}>{project.language} - {project.bookName}</u>
+            return (
+                <Link to={`/edit-project/${project.id}`}>
+                    <u key={project.id}>{project.language} - {project.bookName}</u>
+                </Link>
+            );
         });
     }
 
