@@ -1,0 +1,106 @@
+.project-filter {
+  float: right;
+}
+
+.project-details__container {
+    display: flex;
+    margin: 15px;
+    min-height: 350px;
+}
+
+.project-details__project-description {
+    flex: 2;
+    font-size: x-large;
+    position: relative;
+    box-shadow: 0 0 5px 2px #cfd3d7;
+    border-radius: 10px;
+    margin-right: 12px;
+    padding: 25px 15px;
+}
+
+.project-details__project-description i, .project-details__add-contributor i{
+    margin-right: 8px;
+}
+
+.project-details__contributors {
+    flex: 3;
+    box-shadow: 0 0 5px 2px #cfd3d7;
+    border-radius: 10px;
+    padding: 5px 12px;
+}
+
+.project-details__book-name {
+    display: flex;
+    align-items: center;
+    color: red;
+    font-size: xx-large;
+}
+
+.project-details__language {
+    display: flex;
+    align-items: center;
+}
+
+.project-details__edit-panel {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    left: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-details__completed-checkbox {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.project-details__edit-panel i.delete {
+    font-size: 40px;
+}
+
+.project-contributors__header {
+    font-size: x-large;
+    text-align: center;
+    margin: 0;
+}
+
+.project-details__contributor-names {
+    height: 70%;
+    overflow-y: auto;
+}
+
+.project-contributors__row {
+    font-size: 19px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    cursor: default;
+}
+
+.addContributor-button {
+    width: 100%;
+    height: 45px;
+    background: #1d7fea;
+    font-size: 17px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    margin-top: 16px;
+    border-radius: 5px;
+    border: none;    
+    cursor: pointer;
+}
+
+.available-contributors__container {
+    width: 400px;
+    min-height: 100px;
+    max-height: 250px;
+    overflow-y: auto;
+}
