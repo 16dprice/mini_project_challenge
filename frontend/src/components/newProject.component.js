@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import WizardForm from "./projectWizard/projectForm.component";
+import ProjectForm from "./projectWizard/projectForm.component";
 import {makeStyles} from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -49,7 +49,10 @@ export default function NewProject() {
                 BackdropProps={{timeout: 500}}
             >
                 <Fade in={open}>
-                    <WizardForm className={classes.paper} />
+                    <ProjectForm
+                        className={classes.paper}
+                        handleClose={handleClose}
+                    />
                 </Fade>
             </Modal>
         </>
