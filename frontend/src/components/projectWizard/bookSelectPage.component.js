@@ -14,10 +14,12 @@ class BookSelectPage extends Component {
 
     renderBooks() {
         return BookApiAdapter.getBooks().map(book => {
+            const isSelected = book.slug === this.props.selectedBook;
             return (
                 <div key={book.slug}
-                     className="project-contributors__row"
-                     onClick={() => this.props.selectBook(book.slug)}>
+                     onClick={() => this.props.selectBook(book.slug)}
+                     className={"project-contributors__row " + (isSelected ? 'selected' : '')}
+                >
                     {book.name} ({book.slug})
                 </div>
             )
@@ -60,7 +62,10 @@ class BookSelectPage extends Component {
                     <button className="form-button" onClick={this.props.goToLanguageSelectPage}>
                         <i className="material-icons">arrow_back</i>Back
                     </button>
-                    <button className="form-button" onClick={this.handleCreate} disabled={!this.canCreate()}>
+                    <button className={"form-button " + (this.canCreate() ? '' : 'disabled')}
+                            onClick={this.handleCreate}
+                            disabled={!this.canCreate()}
+                    >
                         <i className="material-icons">arrow_forward</i>Create
                     </button>
                 </div>

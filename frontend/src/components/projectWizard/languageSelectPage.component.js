@@ -13,10 +13,12 @@ class LanguageSelectPage extends Component {
 
     renderLanguages() {
         return LanguageApiAdapter.getLanguages().map(language => {
+            const isSelected = language.slug === this.props.selectedLanguage;
             return (
                 <div key={language.slug}
                      onClick={() => this.props.selectLanguage(language.slug)}
-                     className="project-contributors__row">
+                     className={"project-contributors__row " + (isSelected ? 'selected' : '')}
+                >
                     {language.original_name} ({language.slug})
                 </div>
             )
@@ -43,8 +45,10 @@ class LanguageSelectPage extends Component {
                     <button className="form-button" onClick={this.handleCancel}>
                         <i className="material-icons">clear</i>Cancel
                     </button>
-                    <button className="form-button" onClick={this.props.goToBookSelectPage}
-                            disabled={!this.canContinue()}>
+                    <button className={"form-button " + (this.canContinue() ? '' : 'disabled')}
+                            onClick={this.props.goToBookSelectPage}
+                            disabled={!this.canContinue()}
+                    >
                         <i className="material-icons">arrow_forward</i>Continue
                     </button>
                 </div>
