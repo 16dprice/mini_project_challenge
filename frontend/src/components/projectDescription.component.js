@@ -33,9 +33,10 @@ export default class ProjectDescription extends Component {
                 </div>
                 <div className="project-details__edit-panel">
                     <span className="project-details__completed-checkbox">
-                        <input type="checkbox" onClick={this.handleCompletedCheckbox}/>Completed
+                        <input id="completed-checkBox" type="checkbox" onClick={this.handleCompletedCheckbox} />
+                        <label for="completed-checkBox">Completed</label>
                     </span>
-                    <i className="material-icons" onClick={this.handleProjectDelete}>delete</i>
+                    <i className="material-icons delete" onClick={this.handleProjectDelete}>delete</i>
                 </div>
             </div>
         )

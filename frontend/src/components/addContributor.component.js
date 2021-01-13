@@ -52,7 +52,9 @@ export const AddContributor = props => {
 
     return (
         <>
-            <button onClick={handleOpen}>Add Contributor</button>
+            <button className="addContributor-button" onClick={handleOpen}>
+                <i class="material-icons">person_add</i>Add Contributor
+                </button>
             <Modal
                 aria-labelledby="add-contributor-modal-title"
                 className={classes.modal}

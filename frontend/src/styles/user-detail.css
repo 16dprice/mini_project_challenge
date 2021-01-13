@@ -1,7 +1,7 @@
 .user-details__container {
   display: flex;
   margin: 15px;
-  min-height: 300px;
+  min-height: 350px;
 }
 
 .user-details__names {

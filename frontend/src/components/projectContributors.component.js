@@ -44,14 +44,11 @@ export default class ProjectContributors extends Component {
     getContributorsList() {
         return this.state.project.contributors.map(contributor => {
             return (
-                <div key={contributor.username}>
-                    <span><u>{contributor.firstName} {contributor.lastName}</u></span>
-                    <button
-                        onClick={() => this.handleContributorDelete(contributor)}
-                        style={{float: 'right'}}
-                    >
-                        Delete
-                    </button>
+                <div key={contributor.username} className="project-contributors__row">
+                    <u>{contributor.firstName} {contributor.lastName}</u>
+                        <i className="material-icons delete" 
+                            onClick={() => this.handleContributorDelete(contributor)}>delete
+                        </i>
                 </div>
             )
         });
@@ -60,7 +57,7 @@ export default class ProjectContributors extends Component {
     render() {
         return (
             <div className="project-details__contributors">
-                <div>Contributors</div>
+                <p class="project-contributors__header">Contributors</p>
                 <div className="project-details__contributor-names">
                     {this.getContributorsList()}
                 </div>
