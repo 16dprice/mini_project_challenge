@@ -24,15 +24,42 @@ class ProjectForm extends Component {
         this.setState({page: 'bookSelectPage'});
     }
 
-    render() {
-        const {page} = this.state;
+    getLanguagePage() {
+        return (
+            <div>
+                <LanguageSelectPage
+                    goToBookSelectPage={this.goToBookSelectPage}
+                    handleClose={this.props.handleClose}
+                />
+            </div>
+        )
+    }
 
+    getBookPage() {
+        return (
+            <div>
+                <BookSelectPage
+                    goToLanguageSelectPage={this.goToLanguageSelectPage}
+                    handleClose={this.props.handleClose}
+                />
+            </div>
+        )
+    }
+
+    getCurrentPage() {
+        switch (this.state.page) {
+            case 'bookSelectPage':
+                return this.getBookPage()
+            case 'languageSelectPage':
+            default:
+                return this.getLanguagePage()
+        }
+    }
+
+    render() {
         return (
             <div className={this.props.className}>
-                {page === 'languageSelectPage' &&
-                <div><LanguageSelectPage goToBookSelectPage={this.goToBookSelectPage}/></div>}
-                {page === 'bookSelectPage' &&
-                <div><BookSelectPage goToLanguageSelectPage={this.goToLanguageSelectPage}/></div>}
+                {this.getCurrentPage()}
             </div>
         )
     }
