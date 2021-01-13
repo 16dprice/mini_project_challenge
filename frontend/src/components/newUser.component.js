@@ -72,7 +72,7 @@ export default function NewUser() {
         <>
             <span className="new-card" onClick={handleOpen}>
                 <i className="material-icons">person_add</i>
-                <a>New User</a>
+                New User
             </span>
             <Modal
                 aria-labelledby="new-user-modal-title"

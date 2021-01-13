@@ -37,7 +37,7 @@ export default function NewProject() {
         <>
             <span className="new-card" onClick={handleOpen}>
                 <i className="material-icons">book</i>
-                <a>New Project</a>
+                New Project
             </span>
             <Modal
                 aria-labelledby="new-user-modal-title"

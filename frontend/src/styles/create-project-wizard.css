@@ -1,3 +1,8 @@
+.selected {
+    background: #a4cbff;
+    border-radius: 5px;
+}
+
 .language-select-list {
     width: 600px;
     height: 250px;
