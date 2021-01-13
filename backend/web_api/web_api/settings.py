@@ -26,7 +26,9 @@ SECRET_KEY = 'pks!)rw3ip7zmzwuji6zyyxz1fbb6zw-&=#o&(iz$caby0-8u_'
 DEBUG = True
 
 ALLOWED_HOSTS = [] # docker: '0.0.0.0'
-
+CORS_ORIGIN_WHITELIST = [
+    '0.0.0.0:8000'
+]
 
 # Application definition
 
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'appmodule',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'web_api.urls'
