@@ -7,7 +7,7 @@ web:
 web_migrate:
   extends:
     service: web
-  command: python manage.py migrate
+  command: bash -c "python manage.py flush --no-input && python manage.py migrate"
 web_run:
   extends:
     service: web
