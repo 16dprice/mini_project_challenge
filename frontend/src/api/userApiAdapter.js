@@ -1,5 +1,16 @@
+import axios from 'axios';
+
 export default class UserApiAdapter {
     static userList() {
+        axios.get('http://0.0.0.0:8000/api/users/')
+            .then((res) => {
+                console.log(res.data);
+            });
+
+        return this.mockedUserList();
+    }
+
+    static mockedUserList() {
         return [
             {
                 id: "1",
