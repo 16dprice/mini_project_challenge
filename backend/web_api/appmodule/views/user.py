@@ -20,11 +20,15 @@ class UserList(APIView):
         lastName = request.data.get('lastName', None)
 
         if username != None and firstName != None and lastName != None:
-                
-            User.objects.create(
-                username=username, first_name=firstName, last_name=lastName
-            )
-            return Response(status=status_code.HTTP_200_OK)
+            try:
+                validateUser = User.objects.get(username=username)
+                # already exists
+                return Response(status=status_code.HTTP_409_CONFLICT)
+            except:
+                User.objects.create(
+                    username=username, first_name=firstName, last_name=lastName
+                )
+                return Response(status=status_code.HTTP_200_OK)
         else:
             return Response(status=status_code.HTTP_400_BAD_REQUEST)
 
