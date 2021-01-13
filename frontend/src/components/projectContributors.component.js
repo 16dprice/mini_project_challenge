@@ -46,7 +46,7 @@ export default class ProjectContributors extends Component {
             return (
                 <div key={contributor.username} className="project-contributors__row">
                     <u>{contributor.firstName} {contributor.lastName}</u>
-                        <i className="material-icons delete" 
+                        <i className="material-icons delete actionIcon" 
                             onClick={() => this.handleContributorDelete(contributor)}>delete
                         </i>
                 </div>

@@ -20,7 +20,7 @@ a:visited {
   color: unset;
 }
 
-input:focus, form:focus {
+*:focus {
   outline: none;
 }
 
@@ -55,4 +55,8 @@ nav .nav-link {
 .nav-link.current {
     color: white;
     background-color: #1a87ff;
+}
+
+i.actionIcon{
+    cursor: pointer;
 }

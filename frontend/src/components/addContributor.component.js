@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.paper,
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
+        padding: theme.spacing(2, 3, 2),
     }
 }));
 
@@ -42,9 +42,9 @@ export const AddContributor = props => {
 
         return availableContributors.map(contributor => {
             return (
-                <div key={contributor.id}>
+                <div key={contributor.id} className="project-contributors__row">
                     <span>{contributor.firstName} {contributor.lastName}</span>
-                    <button style={{float: 'right'}} onClick={() => props.handleContributorAdd(contributor)}>Add</button>
+                    <i className="material-icons actionIcon" onClick={() => props.handleContributorAdd(contributor)}>person_add</i>
                 </div>
             )
         });
@@ -65,10 +65,15 @@ export const AddContributor = props => {
                 BackdropProps={{timeout: 500}}
             >
                 <Fade in={open}>
-                    <div className={classes.paper}>
-                        <div id="add-contributor-modal-title">Users</div>
-                        {getAvailableContributors()}
-                        <button onClick={handleClose}>Close</button>
+                    <div className={classes.paper} style={{ borderRadius: '10px', border: 'none' }}>
+                        <p id="add-contributor-modal-title" 
+                            className="project-contributors__header">Users</p>
+                        <div className="available-contributors__container">
+                            {getAvailableContributors()}
+                        </div>
+                        <button className="addContributor-button" onClick={handleClose}>
+                            <i className="material-icons" style={ { marginRight: '15px' }}>clear</i>Close
+                        </button>
                     </div>
                 </Fade>
             </Modal>
