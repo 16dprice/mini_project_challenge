@@ -43,8 +43,10 @@ class LanguageSelectPage extends Component {
                     <button className="form-button" onClick={this.handleCancel}>
                         <i className="material-icons">clear</i>Cancel
                     </button>
-                    <button className="form-button" onClick={this.props.goToBookSelectPage}
-                            disabled={!this.canContinue()}>
+                    <button className={"form-button " + (this.canContinue() ? '' : 'disabled')}
+                            onClick={this.props.goToBookSelectPage}
+                            disabled={!this.canContinue()}
+                    >
                         <i className="material-icons">arrow_forward</i>Continue
                     </button>
                 </div>

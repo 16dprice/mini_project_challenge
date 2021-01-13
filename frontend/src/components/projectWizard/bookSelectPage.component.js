@@ -60,7 +60,10 @@ class BookSelectPage extends Component {
                     <button className="form-button" onClick={this.props.goToLanguageSelectPage}>
                         <i className="material-icons">arrow_back</i>Back
                     </button>
-                    <button className="form-button" onClick={this.handleCreate} disabled={!this.canCreate()}>
+                    <button className={"form-button " + (this.canCreate() ? '' : 'disabled')}
+                            onClick={this.handleCreate}
+                            disabled={!this.canCreate()}
+                    >
                         <i className="material-icons">arrow_forward</i>Create
                     </button>
                 </div>
