@@ -1,3 +1,3 @@
 django==1.11
 djangorestframework==3.10
-django-referrer-policy
+django-cors-headers==2.2.0

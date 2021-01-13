@@ -27,8 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [] # docker: '0.0.0.0'
 
-REFERRER_POLICY = 'no-referrer'
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,17 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'appmodule',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_referrer_policy.middleware.ReferrerPolicyMiddleware'
 ]
 
 ROOT_URLCONF = 'web_api.urls'
@@ -128,3 +127,5 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     )
 }
+
+CORS_ORIGIN_ALLOW_ALL=True
