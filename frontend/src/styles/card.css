@@ -2,7 +2,7 @@
   display: grid;
   /* grid-template-columns: 1fr 1fr 1fr 1fr; */
    grid-template-columns: repeat(auto-fill, minmax(160px, 220px));
-   grid-template-rows: 130px;
+   grid-template-rows: 135px;
    column-gap: 1.5rem;
    row-gap: 1rem;
    margin: 2rem;
@@ -31,12 +31,16 @@
   font-size: 24px;
   display: flex;
     align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .card__subHeader {
     display: flex;
     align-items: center;
-    font-size: 18px;
+    font-size: 17px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 a.card__button {
