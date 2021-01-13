@@ -94,7 +94,9 @@ export default class UserDetails extends Component {
     render() {
         return (
             <div>
-                <div><u>Users</u> &#8594; {this.state.user.username}</div>
+                <div className="breadcrumb-filter-group">
+                    <u>Users</u> &#8594; <span style={{ color: 'red' }}>{this.state.user.username}</span>
+                </div>
                 <div className="user-details__container">
                     <div className="user-details__names">
                         <span className="user-details__username">{this.state.user.username}</span>

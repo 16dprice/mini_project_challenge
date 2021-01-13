@@ -60,3 +60,12 @@ nav .nav-link {
 i.actionIcon{
     cursor: pointer;
 }
+
+.breadcrumb-filter-group {
+  margin: 2rem;
+  font-size: large;
+}
+
+.project-filter input[type='radio'] ~ input[type='radio'] {
+    margin-left: 15px;
+} 

@@ -24,7 +24,7 @@ export default class UsersList extends Component {
     render() {
         return (
             <div>
-                <div>Users</div>
+                <div className="breadcrumb-filter-group">Users</div>
                 <div className="card-container">
                     {this.getNewUserCard()}
                     {this.getUserCards()}
