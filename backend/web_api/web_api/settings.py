@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [] # docker: '0.0.0.0'
 
+REFERRER_POLICY = 'no-referrer'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_referrer_policy.middleware.ReferrerPolicyMiddleware'
 ]
 
 ROOT_URLCONF = 'web_api.urls'
