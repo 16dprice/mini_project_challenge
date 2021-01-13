@@ -10,10 +10,32 @@ class BookSelectPage extends Component {
 
         this.handleCancel = this.handleCancel.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
+
+        this.state = {
+            searchString: ''
+        }
+    }
+
+    getFilteredBooks() {
+        const allBooks = BookApiAdapter.getBooks();
+
+        if(this.state.searchString === '') {
+            return allBooks;
+        }
+
+        return allBooks.filter(book => {
+            return (
+                book.slug.toLowerCase().includes(this.state.searchString) ||
+                book.name.toLowerCase().includes(this.state.searchString)
+            );
+        });
     }
 
     renderBooks() {
-        return BookApiAdapter.getBooks().map(book => {
+        const filteredBooks = this.getFilteredBooks();
+
+        return filteredBooks.map(book => {
             const isSelected = book.slug === this.props.selectedBook;
             return (
                 <div key={book.slug}
@@ -40,6 +62,12 @@ class BookSelectPage extends Component {
         this.props.handleClose();
     }
 
+    handleSearch(e) {
+        this.setState({
+            searchString: e.target.value.toLowerCase()
+        });
+    }
+
     canCreate() {
         return (
             this.props.selectedLanguage !== '' &&
@@ -51,7 +79,7 @@ class BookSelectPage extends Component {
         return (
             <>
                 <div className="modal-title">Select Book</div>
-                <input type="text" placeholder="Start typing a book name or code"/>
+                <input type="text" placeholder="Start typing a book name or code" onChange={this.handleSearch}/>
                 <div className="language-select-list">
                     {this.renderBooks()}
                 </div>
