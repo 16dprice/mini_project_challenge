@@ -1,2 +1,5 @@
 
 frontend/.eslintcache
+
+frontend/node_modules
+.idea/
