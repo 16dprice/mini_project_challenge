@@ -13,10 +13,12 @@ class LanguageSelectPage extends Component {
 
     renderLanguages() {
         return LanguageApiAdapter.getLanguages().map(language => {
+            const isSelected = language.slug === this.props.selectedLanguage;
             return (
                 <div key={language.slug}
                      onClick={() => this.props.selectLanguage(language.slug)}
-                     className="project-contributors__row">
+                     className={"project-contributors__row " + (isSelected ? 'selected' : '')}
+                >
                     {language.original_name} ({language.slug})
                 </div>
             )

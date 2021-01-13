@@ -14,10 +14,12 @@ class BookSelectPage extends Component {
 
     renderBooks() {
         return BookApiAdapter.getBooks().map(book => {
+            const isSelected = book.slug === this.props.selectedBook;
             return (
                 <div key={book.slug}
-                     className="project-contributors__row"
-                     onClick={() => this.props.selectBook(book.slug)}>
+                     onClick={() => this.props.selectBook(book.slug)}
+                     className={"project-contributors__row " + (isSelected ? 'selected' : '')}
+                >
                     {book.name} ({book.slug})
                 </div>
             )
