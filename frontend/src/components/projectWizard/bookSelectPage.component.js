@@ -69,6 +69,8 @@ class BookSelectPage extends Component {
         this.props.deselectBook();
         this.props.deselectLanguage();
         this.props.handleClose();
+
+        window.location.reload();
     }
 
     handleSearch(e) {
