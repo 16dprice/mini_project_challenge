@@ -1,0 +1,16 @@
+FROM node:13.12.0-alpine
+
+RUN mkdir /tmp/react-container
+WORKDIR /tmp/react-container
+
+ENV PATH /tmp/react-container/node-modules/.bin:$PATH
+
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install create-react-app
+#RUN npm install react-script@3.4.1 -g --silent
+
+COPY . ./
+
+CMD ["npm","start"]
+
