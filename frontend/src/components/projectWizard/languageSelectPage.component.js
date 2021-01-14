@@ -29,10 +29,7 @@ class LanguageSelectPage extends Component {
 
     setLanguagesInState() {
         LanguageApiAdapter.getFilteredLanguages(this.state.searchString)
-            .then(languages => {
-                console.log(languages);
-                this.setState({ languages })
-            });
+            .then(languages => this.setState({ languages }));
     }
 
     renderLanguages() {
