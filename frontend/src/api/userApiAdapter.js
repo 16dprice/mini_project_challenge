@@ -12,8 +12,7 @@ export default class UserApiAdapter {
                         lastName: user.last_name
                     }
                 });
-            })
-            .catch(err => console.log(err));
+            });
     }
 
     static getUserById(id) {
