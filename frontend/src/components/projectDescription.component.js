@@ -8,7 +8,7 @@ export default class ProjectDescription extends Component {
 
         this.handleCompletedCheckbox = this.handleCompletedCheckbox.bind(this);
         this.handleProjectDelete = this.handleProjectDelete.bind(this);
-        
+
         this.state = {
             project: this.props.project
         }
@@ -33,7 +33,7 @@ export default class ProjectDescription extends Component {
     }
 
     handleProjectDelete(e) {
-        // TODO: delete project via api
+        ProjectApiAdapter.deleteProject(this.state.project.id);
         window.location.pathname = '/projects';
     }
 

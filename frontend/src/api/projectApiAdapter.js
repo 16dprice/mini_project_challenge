@@ -77,4 +77,8 @@ export default class ProjectApiAdapter {
             completed: JSON.stringify(completed)
         })
     }
+
+    static deleteProject(projectId) {
+        axios.delete(`http://0.0.0.0:8000/api/projects/${projectId}`);
+    }
 }
