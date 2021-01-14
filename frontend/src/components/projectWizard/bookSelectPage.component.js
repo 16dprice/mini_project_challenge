@@ -64,13 +64,14 @@ class BookSelectPage extends Component {
     }
 
     handleCreate() {
-        ProjectApiAdapter.createProject(this.props.selectedBook, this.props.selectedLanguage);
+        ProjectApiAdapter.createProject(this.props.selectedBook, this.props.selectedLanguage)
+            .then(_ => {
+                this.props.setProjectsListState();
+            });
 
         this.props.deselectBook();
         this.props.deselectLanguage();
         this.props.handleClose();
-
-        window.location.reload();
     }
 
     handleSearch(e) {

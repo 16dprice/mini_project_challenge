@@ -52,6 +52,7 @@ export const NewProject = props => {
                     <ProjectForm
                         className={classes.paper}
                         handleClose={handleClose}
+                        setProjectsListState={props.setProjectsListState}
                     />
                 </Fade>
             </Modal>

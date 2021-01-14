@@ -41,6 +41,7 @@ class ProjectForm extends Component {
                 <BookSelectPage
                     goToLanguageSelectPage={this.goToLanguageSelectPage}
                     handleClose={this.props.handleClose}
+                    setProjectsListState={this.props.setProjectsListState}
                 />
             </div>
         )

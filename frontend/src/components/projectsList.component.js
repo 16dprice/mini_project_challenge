@@ -14,6 +14,8 @@ class ProjectsList extends Component {
     constructor(props) {
         super(props);
 
+        this.setProjectsInState = this.setProjectsInState.bind(this);
+
         this.state = {
             projects: []
         }
@@ -41,7 +43,7 @@ class ProjectsList extends Component {
     }
 
     getNewProjectCard() {
-        return <Card key="new" content={ <NewProject /> } />;
+        return <Card key="new" content={ <NewProject setProjectsListState={this.setProjectsInState} /> } />;
     }
 
     getProjectCardsFromProjectObjects(projectObjects) {
