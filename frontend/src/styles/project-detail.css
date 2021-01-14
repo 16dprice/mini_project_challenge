@@ -65,7 +65,7 @@
 .project-contributors__header {
     font-size: x-large;
     text-align: center;
-    margin: 0;
+    margin: 10px;
 }
 
 .project-details__contributor-names {
