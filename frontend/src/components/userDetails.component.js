@@ -13,13 +13,11 @@ export default class UserDetails extends Component {
         this.handleLastNameChange = this.handleLastNameChange.bind(this);
         this.updateUser = this.updateUser.bind(this);
 
-        const projectsContributedTo = ProjectApiAdapter.getProjectsByUserId(props.match.params.userId);
-
         this.state = {
             user: {
                 userId: props.match.params.userId
             },
-            projectsContributedTo,
+            projectsContributedTo: [],
             editingUser: false,
             hasEditedUser: false
         };
@@ -27,6 +25,7 @@ export default class UserDetails extends Component {
 
     componentDidMount() {
         this.setUserInState(this.state.user.userId);
+        this.setProjectsContributedToInState(this.state.user.userId);
     }
 
     setUserInState(userId) {
@@ -36,6 +35,11 @@ export default class UserDetails extends Component {
                     user: res
                 })
             });
+    }
+
+    setProjectsContributedToInState(userId) {
+        ProjectApiAdapter.getProjectsByUserId(userId)
+            .then(projectsContributedTo => this.setState({ projectsContributedTo }))
     }
 
     handleFirstNameChange(e) {
