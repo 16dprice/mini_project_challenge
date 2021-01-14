@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function NewProject() {
+export const NewProject = props => {
 
     const classes = useStyles();
     const [open, setOpen] = useState(false);
