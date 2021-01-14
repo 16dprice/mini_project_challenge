@@ -8,14 +8,14 @@ export default class ProjectDescription extends Component {
 
         this.handleCompletedCheckbox = this.handleCompletedCheckbox.bind(this);
         this.handleProjectDelete = this.handleProjectDelete.bind(this);
-
+        
         this.state = {
             project: this.props.project
         }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(this.props.project !== prevProps.project) {
+        if (this.props.project !== prevProps.project) {
             this.setState({
                 project: this.props.project
             });
@@ -24,6 +24,12 @@ export default class ProjectDescription extends Component {
 
     handleCompletedCheckbox(e) {
         ProjectApiAdapter.updateProjectCompletionStatus(this.state.project.id, e.target.checked);
+        this.setState({
+            project: {
+                ...this.state.project,
+                completed: e.target.checked
+            }
+        })
     }
 
     handleProjectDelete(e) {
@@ -42,7 +48,8 @@ export default class ProjectDescription extends Component {
                 </div>
                 <div className="project-details__edit-panel">
                     <span className="project-details__completed-checkbox">
-                        <input id="completed-checkBox" type="checkbox" onClick={this.handleCompletedCheckbox} />
+                        <input id="completed-checkBox" type="checkbox" onChange={this.handleCompletedCheckbox}
+                               checked={!!this.state.project.completed}/>
                         <label htmlFor="completed-checkBox">Completed</label>
                     </span>
                     <i className="material-icons delete actionIcon" onClick={this.handleProjectDelete}>delete</i>
