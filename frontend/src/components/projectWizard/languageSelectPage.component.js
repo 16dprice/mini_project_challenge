@@ -24,14 +24,14 @@ class LanguageSelectPage extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(this.state.searchString !== prevState.searchString) {
+        if (this.state.searchString !== prevState.searchString) {
             this.setLanguagesInState();
         }
     }
 
     setLanguagesInState() {
         LanguageApiAdapter.getFilteredLanguages(this.state.searchString)
-            .then(languages => this.setState({ languages }));
+            .then(languages => this.setState({languages}));
     }
 
     renderLanguages() {
@@ -64,13 +64,15 @@ class LanguageSelectPage extends Component {
         const container = e.target;
         if (container.offsetHeight + container.scrollTop >= container.scrollHeight) {
             const newIndex = this.state.index + 10;
-            this.setState({ index: newIndex })
             const languageList = this.state.languages;
+
             LanguageApiAdapter.getMoreLanguages(newIndex)
-                .then(newLanguages => 
-                    this.setState({ 
+                .then(newLanguages =>
+                    this.setState({
+                        index: newIndex,
                         languages: languageList.concat(newLanguages)
-                    }));
+                    })
+                );
         }
     }
 
