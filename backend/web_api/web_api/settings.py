@@ -25,7 +25,7 @@ SECRET_KEY = 'pks!)rw3ip7zmzwuji6zyyxz1fbb6zw-&=#o&(iz$caby0-8u_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [] # docker: '0.0.0.0'
+ALLOWED_HOSTS = ['0.0.0.0'] # docker: '0.0.0.0'
 
 # Application definition
 
