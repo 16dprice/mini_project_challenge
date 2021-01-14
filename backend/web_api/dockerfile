@@ -1,0 +1,8 @@
+FROM python:3.6.12
+env PYTHONUNBUFFERED 1
+
+RUN mkdir /tmp/container
+WORKDIR /tmp/container
+
+COPY . /tmp/container
+RUN pip install -r requirements.txt

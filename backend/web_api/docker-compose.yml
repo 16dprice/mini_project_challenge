@@ -1,0 +1,16 @@
+web:
+  build: .
+  environment:
+    MYENV: EXAMPLE
+  volumes:
+    - .:/tmp/container
+web_migrate:
+  extends:
+    service: web
+  command: bash -c "python manage.py migrate && python seed-book.py && python seed-language.py"
+web_run:
+  extends:
+    service: web
+  command: python manage.py runserver 0.0.0.0:8000
+  ports:
+    - "8000:8000"

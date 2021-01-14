@@ -1,0 +1,84 @@
+.card-container {
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+   grid-template-columns: repeat(auto-fill, minmax(160px, 220px));
+   grid-auto-rows: 135px;
+   column-gap: 2rem;
+   row-gap: 1rem;
+   margin: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px 12px;
+  box-shadow: 0 0 5px 2px #c2d2dd;
+  border-radius: 10px;
+}
+
+.card:hover {
+    background: #ededefcf;
+    box-shadow: 0 0 5px 3px #89b8d3;
+}
+
+.card i.material-icons {
+    margin-right: 6px;
+}
+
+.card__header {
+  color: red;
+  font-size: 24px;
+  display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.card__subHeader {
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+a.card__button {
+    height: 30px;
+    width: 100%;
+    margin-top: 10px;
+    background: #1d7fea;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px 0px darkgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: UPPERCASE;
+    font-weight: bold;
+    font-size: large;
+}
+
+.card__button:hover {
+    background: #3333cb;
+    box-shadow: 2px 3px 3px 0px #6f6f6f;
+}
+
+.new-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: #1d7fea;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.new-card i.material-icons {
+    font-size: 36px;
+    margin-right: 0;
+    margin-bottom: 10px;
+}

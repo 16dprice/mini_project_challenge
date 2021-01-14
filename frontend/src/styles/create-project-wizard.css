@@ -1,0 +1,27 @@
+.selected {
+    background: #a4cbff;
+    border-radius: 5px;
+}
+
+.language-select-list {
+    width: 600px;
+    height: 250px;
+    overflow-y: auto;
+}
+
+.form-control-group-right {
+    display: flex;
+    margin-top: 15px;
+    justify-content: flex-end;
+}
+
+.form-control-group-right .form-button + .form-button {
+    margin-left: 10px;
+    background-color: #1a87ff;
+}
+
+.form-button.disabled {
+    background-color: #d3d3d3 !important;
+    color: #ffffffc4;
+    cursor: not-allowed;
+}
