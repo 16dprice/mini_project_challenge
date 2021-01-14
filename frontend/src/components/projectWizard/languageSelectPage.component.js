@@ -21,29 +21,22 @@ class LanguageSelectPage extends Component {
         this.setLanguagesInState();
     }
 
-    setLanguagesInState() {
-        LanguageApiAdapter.getLanguages()
-            .then(languages => this.setState({ languages }));
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.state.searchString !== prevState.searchString) {
+            this.setLanguagesInState();
+        }
     }
 
-    getFilteredLanguages() {
-        if(this.state.searchString === '') {
-            return this.state.languages;
-        }
-
-        return this.state.languages.filter(language => {
-            return (
-                language.slug.toLowerCase().includes(this.state.searchString) ||
-                language.original_name.toLowerCase().includes(this.state.searchString) ||
-                language.anglicized_name.toLowerCase().includes(this.state.searchString)
-            );
-        });
+    setLanguagesInState() {
+        LanguageApiAdapter.getFilteredLanguages(this.state.searchString)
+            .then(languages => {
+                console.log(languages);
+                this.setState({ languages })
+            });
     }
 
     renderLanguages() {
-        const filteredLanguages = this.getFilteredLanguages();
-
-        return filteredLanguages.map(language => {
+        return this.state.languages.map(language => {
             const isSelected = language.slug === this.props.selectedLanguage;
             return (
                 <div key={language.slug}
