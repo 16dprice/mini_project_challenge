@@ -1,8 +1,9 @@
 import axios from 'axios';
+import apiConfig from './apiConfig.json';
 
 export default class BookApiAdapter {
     static getBooks() {
-        return axios.get('http://0.0.0.0:8000/api/books')
+        return axios.get(`${apiConfig.SERVER_URL}/api/books`)
             .then(res => res.data);
     }
 }

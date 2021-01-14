@@ -1,9 +1,10 @@
 import axios from 'axios';
+import apiConfig from './apiConfig.json';
 
 export default class ProjectApiAdapter {
 
     static getProjects() {
-        return axios.get('http://0.0.0.0:8000/api/projects')
+        return axios.get(`${apiConfig.SERVER_URL}/api/projects`)
             .then(res => {
                 return res.data.map(project => {
                     return {
@@ -17,7 +18,7 @@ export default class ProjectApiAdapter {
     }
 
     static getProjectById(id) {
-        return axios.get(`http://0.0.0.0:8000/api/projects/${id}`)
+        return axios.get(`${apiConfig.SERVER_URL}/api/projects/${id}`)
             .then(res => {
                 const contributors = res.data.contributors.map(contributor => {
                     return {
@@ -39,20 +40,20 @@ export default class ProjectApiAdapter {
     }
 
     static createProject(bookSlug, languageSlug) {
-        return axios.post('http://0.0.0.0:8000/api/projects/', {
+        return axios.post(`${apiConfig.SERVER_URL}/api/projects/`, {
             bookSlug,
             languageSlug
         });
     }
 
     static addContributorToProject(projectId, contributorIds) {
-        return axios.post(`http://0.0.0.0:8000/api/projects/${projectId}/contributors`, {
+        return axios.post(`${apiConfig.SERVER_URL}/api/projects/${projectId}/contributors`, {
             contributors: JSON.stringify(contributorIds)
         });
     }
 
     static removeContributorFromProject(projectId, contributorId) {
-        return axios.delete(`http://0.0.0.0:8000/api/projects/${projectId}/contributors`, {
+        return axios.delete(`${apiConfig.SERVER_URL}/api/projects/${projectId}/contributors`, {
             data: {
                 contributorId
             }
@@ -60,7 +61,7 @@ export default class ProjectApiAdapter {
     }
 
     static getProjectsByUserId(userId) {
-        return axios.get(`http://0.0.0.0:8000/api/users/${userId}/projects`)
+        return axios.get(`${apiConfig.SERVER_URL}/api/users/${userId}/projects`)
             .then(res => {
                 return res.data.map(project => {
                     return {
@@ -73,12 +74,12 @@ export default class ProjectApiAdapter {
     }
 
     static updateProjectCompletionStatus(projectId, completed) {
-        axios.patch(`http://0.0.0.0:8000/api/projects/${projectId}/`, {
+        axios.patch(`${apiConfig.SERVER_URL}/api/projects/${projectId}/`, {
             completed: JSON.stringify(completed)
         })
     }
 
     static deleteProject(projectId) {
-        axios.delete(`http://0.0.0.0:8000/api/projects/${projectId}`);
+        axios.delete(`${apiConfig.SERVER_URL}/api/projects/${projectId}`);
     }
 }
