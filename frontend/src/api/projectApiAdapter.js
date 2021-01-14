@@ -1,6 +1,21 @@
 import axios from 'axios';
 
 export default class ProjectApiAdapter {
+
+    static getProjects() {
+        return axios.get('http://0.0.0.0:8000/api/projects')
+            .then(res => {
+                return res.data.map(project => {
+                    return {
+                        id: project.id,
+                        bookName: project.book.name,
+                        language: project.language.original_name,
+                        completed: project.completed
+                    }
+                })
+            });
+    }
+
     static projectList() {
         return [
             {
@@ -62,14 +77,6 @@ export default class ProjectApiAdapter {
 
     static getProjectById(id) {
         return this.projectList().find(el => el.id === id);
-    }
-
-    static completedProjectList() {
-        return this.projectList().filter(project => project.completed);
-    }
-
-    static uncompletedProjectList() {
-        return this.projectList().filter(project => !project.completed);
     }
 
     static getProjectsByUserId(userId) {

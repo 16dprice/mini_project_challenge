@@ -4,27 +4,44 @@ import { connect } from 'react-redux';
 
 import Card from './card.component';
 import Project from './project.component';
-import NewProject from "./newProject.component";
+import {NewProject} from "./newProject.component";
 import ProjectFilter from "./projectFilter.component";
 
 import ProjectApiAdapter from '../api/projectApiAdapter';
 
 class ProjectsList extends Component {
 
-    getNewProjectCard() {
-        return <Card key="new" content={ <NewProject /> } />;
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            projects: []
+        }
+    }
+
+    componentDidMount() {
+        this.setProjectsInState();
+    }
+
+    setProjectsInState() {
+        ProjectApiAdapter.getProjects()
+            .then(projects => this.setState({ projects }));
     }
 
     getAllProjectObjects() {
-        return ProjectApiAdapter.projectList();
+        return this.state.projects;
     }
 
     getCompletedProjectObjects() {
-        return ProjectApiAdapter.completedProjectList();
+        return this.state.projects.filter(project => project.completed);
     }
 
     getUncompletedProjectObjects() {
-        return ProjectApiAdapter.uncompletedProjectList();
+        return this.state.projects.filter(project => !project.completed);
+    }
+
+    getNewProjectCard() {
+        return <Card key="new" content={ <NewProject /> } />;
     }
 
     getProjectCardsFromProjectObjects(projectObjects) {
