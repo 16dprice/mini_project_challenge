@@ -8,7 +8,7 @@ export default class LanguageApiAdapter {
     }
 
     static getMoreLanguages(index) {
-        return axios.get(`http://127.0.0.1:8000/api/languages/?index=${index}`)
+        return axios.get(`${apiConfig.SERVER_URL}/api/languages/?index=${index}`)
             .then(res => res.data);
     }
 }
