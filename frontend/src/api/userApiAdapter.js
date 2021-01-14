@@ -1,8 +1,9 @@
 import axios from 'axios';
+import apiConfig from "./apiConfig.json";
 
 export default class UserApiAdapter {
     static userList() {
-        return axios.get('http://0.0.0.0:8000/api/users/')
+        return axios.get(`${apiConfig.SERVER_URL}/api/users/`)
             .then(res => {
                 return res.data.map(user => {
                     return {
@@ -16,7 +17,7 @@ export default class UserApiAdapter {
     }
 
     static getUserById(id) {
-        return axios.get(`http://0.0.0.0:8000/api/users/${id}`)
+        return axios.get(`${apiConfig.SERVER_URL}/api/users/${id}`)
             .then(res => {
                 return {
                     id: res.data.id,
@@ -28,7 +29,7 @@ export default class UserApiAdapter {
     }
 
     static createUser(userName, firstName, lastName) {
-        return axios.post('http://0.0.0.0:8000/api/users/',
+        return axios.post(`${apiConfig.SERVER_URL}/api/users/`,
             {
                 username: userName,
                 firstName,
@@ -37,7 +38,7 @@ export default class UserApiAdapter {
     }
 
     static updateUser(userId, firstName, lastName) {
-        return axios.patch(`http://0.0.0.0:8000/api/users/${userId}`, {
+        return axios.patch(`${apiConfig.SERVER_URL}/api/users/${userId}`, {
             firstName,
             lastName
         });
