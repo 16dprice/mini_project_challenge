@@ -71,4 +71,10 @@ export default class ProjectApiAdapter {
                 })
             });
     }
+
+    static updateProjectCompletionStatus(projectId, completed) {
+        axios.patch(`http://0.0.0.0:8000/api/projects/${projectId}/`, {
+            completed: JSON.stringify(completed)
+        })
+    }
 }

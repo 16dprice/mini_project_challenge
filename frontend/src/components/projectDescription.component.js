@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import ProjectApiAdapter from "../api/projectApiAdapter";
 
 export default class ProjectDescription extends Component {
 
@@ -22,7 +23,7 @@ export default class ProjectDescription extends Component {
     }
 
     handleCompletedCheckbox(e) {
-        // TODO: update project completion status via api
+        ProjectApiAdapter.updateProjectCompletionStatus(this.state.project.id, e.target.checked);
     }
 
     handleProjectDelete(e) {
