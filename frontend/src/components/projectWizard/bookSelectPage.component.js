@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {selectBook, deselectBook, deselectLanguage} from "../../actions/projectCreationActions";
 import BookApiAdapter from "../../api/bookApiAdapter";
+import ProjectApiAdapter from "../../api/projectApiAdapter";
 
 class BookSelectPage extends Component {
 
@@ -63,8 +64,8 @@ class BookSelectPage extends Component {
     }
 
     handleCreate() {
-        // TODO: make an api call to create
-        console.log('Making api call to create project...');
+        ProjectApiAdapter.createProject(this.props.selectedBook, this.props.selectedLanguage);
+
         this.props.deselectBook();
         this.props.deselectLanguage();
         this.props.handleClose();
