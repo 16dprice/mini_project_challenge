@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -23,6 +23,15 @@ export const AddContributor = props => {
 
     const classes = useStyles();
     const [open, setOpen] = useState(false);
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        UserApiAdapter.userList()
+            .then(data => {
+                console.log(data);
+                setUsers(data)
+            });
+    }, []);
 
     const handleOpen = () => {
         setOpen(true);
@@ -33,7 +42,6 @@ export const AddContributor = props => {
     };
 
     const getAvailableContributors = () => {
-        const users = UserApiAdapter.userList()
         const currentContributorIds = props.project.contributors.map(contributor => contributor.id);
 
         const availableContributors = users.filter(
@@ -53,7 +61,7 @@ export const AddContributor = props => {
     return (
         <>
             <button className="addContributor-button" onClick={handleOpen}>
-                <i class="material-icons">person_add</i>Add Contributor
+                <i className="material-icons">person_add</i>Add Contributor
                 </button>
             <Modal
                 aria-labelledby="add-contributor-modal-title"

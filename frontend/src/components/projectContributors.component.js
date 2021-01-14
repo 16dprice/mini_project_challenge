@@ -60,7 +60,7 @@ export default class ProjectContributors extends Component {
     render() {
         return (
             <div className="project-details__contributors">
-                <p class="project-contributors__header">Contributors</p>
+                <p className="project-contributors__header">Contributors</p>
                 <div className="project-details__contributor-names">
                     {this.getContributorsList()}
                 </div>
