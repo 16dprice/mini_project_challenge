@@ -16,6 +16,41 @@ export default class ProjectApiAdapter {
             });
     }
 
+    static getProjectById(id) {
+        return axios.get(`http://0.0.0.0:8000/api/projects/${id}`)
+            .then(res => {
+                const contributors = res.data.contributors.map(contributor => {
+                    return {
+                        id: contributor.id,
+                        username: contributor.username,
+                        firstName: contributor.first_name,
+                        lastName: contributor.last_name
+                    }
+                });
+
+                return {
+                    id: res.data.id,
+                    bookName: res.data.book.name,
+                    language: res.data.language.original_name,
+                    completed: res.data.completed,
+                    contributors
+                };
+            });
+    }
+
+    static createProject(bookSlug, languageSlug) {
+        return axios.post('http://0.0.0.0:8000/api/projects/', {
+            bookSlug,
+            languageSlug
+        });
+    }
+
+    static addContributorToProject(projectId, contributorIds) {
+        return axios.post(`http://0.0.0.0:8000/api/projects/${projectId}/contributors`, {
+            contributors: JSON.stringify(contributorIds)
+        });
+    }
+
     static projectList() {
         return [
             {
@@ -75,19 +110,6 @@ export default class ProjectApiAdapter {
         ];
     }
 
-    static getProjectById(id) {
-        return axios.get(`http://0.0.0.0:8000/api/projects/${id}`)
-            .then(res => {
-                return {
-                    id: res.data.id,
-                    bookName: res.data.book.name,
-                    language: res.data.language.original_name,
-                    completed: res.data.completed,
-                    contributors: res.data.contributors
-                }
-            })
-    }
-
     static getProjectsByUserId(userId) {
         return this.projectList().filter(
             project => {
@@ -98,12 +120,5 @@ export default class ProjectApiAdapter {
                 return projectHasUserAsContributor;
             }
         );
-    }
-
-    static createProject(bookSlug, languageSlug) {
-        return axios.post('http://0.0.0.0:8000/api/projects/', {
-            bookSlug,
-            languageSlug
-        });
     }
 }

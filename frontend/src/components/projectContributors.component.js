@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {AddContributor} from "./addContributor.component";
 import { Link } from 'react-router-dom';
+import ProjectApiAdapter from "../api/projectApiAdapter";
 
 export default class ProjectContributors extends Component {
 
@@ -12,6 +13,17 @@ export default class ProjectContributors extends Component {
 
         this.state = {
             project: this.props.project
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.project !== prevProps.project) {
+            this.setState({
+                project: {
+                    ...this.props.project,
+                    contributors: this.props.project.contributors
+                },
+            });
         }
     }
 
@@ -30,7 +42,8 @@ export default class ProjectContributors extends Component {
     }
 
     handleContributorAdd(newContributor) {
-        // TODO: make request to add newContributor to project
+        ProjectApiAdapter.addContributorToProject(this.state.project.id, [newContributor.id]);
+
         let newContributors = this.state.project.contributors;
         newContributors.push(newContributor);
 
