@@ -28,7 +28,6 @@ export const AddContributor = props => {
     useEffect(() => {
         UserApiAdapter.userList()
             .then(data => {
-                console.log(data);
                 setUsers(data)
             });
     }, []);

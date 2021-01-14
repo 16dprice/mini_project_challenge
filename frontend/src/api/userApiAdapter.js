@@ -28,7 +28,6 @@ export default class UserApiAdapter {
     }
 
     static createUser(userName, firstName, lastName) {
-        console.log(`Creating user ${firstName} ${lastName} as @${userName}`);
         return axios.post('http://0.0.0.0:8000/api/users/',
             {
                 username: userName,
