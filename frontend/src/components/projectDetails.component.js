@@ -35,7 +35,7 @@ export default class ProjectDetails extends Component {
                     <u>Projects</u> &#8594; <span style={{ color: 'red' }}>{this.state.project.bookName}</span>
                 </div>
                 <div className="project-details__container">
-                    <ProjectDescription project={this.state.project}/>
+                    <ProjectDescription project={this.state.project} />
                     <ProjectContributors project={this.state.project} />
                 </div>
             </div>
