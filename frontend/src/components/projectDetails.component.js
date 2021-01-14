@@ -9,11 +9,23 @@ export default class ProjectDetails extends Component {
     constructor(props) {
         super(props);
 
-        const project = ProjectApiAdapter.getProjectById(props.match.params.projectId);
-
         this.state = {
-            project
+            project: {
+                id: props.match.params.projectId,
+                contributors: []
+            }
         }
+    }
+
+    componentDidMount() {
+        this.setProjectInState();
+    }
+
+    setProjectInState() {
+        ProjectApiAdapter.getProjectById(this.state.project.id)
+            .then(project => {
+                this.setState({ project });
+            });
     }
 
     render() {

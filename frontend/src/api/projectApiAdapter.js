@@ -76,7 +76,16 @@ export default class ProjectApiAdapter {
     }
 
     static getProjectById(id) {
-        return this.projectList().find(el => el.id === id);
+        return axios.get(`http://0.0.0.0:8000/api/projects/${id}`)
+            .then(res => {
+                return {
+                    id: res.data.id,
+                    bookName: res.data.book.name,
+                    language: res.data.language.original_name,
+                    completed: res.data.completed,
+                    contributors: res.data.contributors
+                }
+            })
     }
 
     static getProjectsByUserId(userId) {

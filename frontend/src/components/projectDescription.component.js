@@ -13,6 +13,14 @@ export default class ProjectDescription extends Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.project !== prevProps.project) {
+            this.setState({
+                project: this.props.project
+            });
+        }
+    }
+
     handleCompletedCheckbox(e) {
         // TODO: update project completion status via api
     }
