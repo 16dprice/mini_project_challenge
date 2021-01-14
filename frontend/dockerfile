@@ -7,8 +7,6 @@ ENV PATH /tmp/react-container/node-modules/.bin:$PATH
 
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm install create-react-app
-#RUN npm install react-script@3.4.1 -g --silent
 
 COPY . ./
 
