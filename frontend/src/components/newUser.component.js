@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function NewUser() {
+export const NewUser = props => {
 
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -47,7 +47,8 @@ export default function NewUser() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        UserApiAdapter.createNewUser(userName, firstName, lastName);
+        UserApiAdapter.createNewUser(userName, firstName, lastName)
+            .then(res => props.getUserObjects());
         clearState();
         handleClose();
     };
