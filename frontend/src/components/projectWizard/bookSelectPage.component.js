@@ -13,18 +13,26 @@ class BookSelectPage extends Component {
         this.handleSearch = this.handleSearch.bind(this);
 
         this.state = {
-            searchString: ''
+            searchString: '',
+            books: []
         }
     }
 
-    getFilteredBooks() {
-        const allBooks = BookApiAdapter.getBooks();
+    componentDidMount() {
+        this.setBooksInState();
+    }
 
+    setBooksInState() {
+        BookApiAdapter.getBooks()
+            .then(books => this.setState({ books }));
+    }
+
+    getFilteredBooks() {
         if(this.state.searchString === '') {
-            return allBooks;
+            return this.state.books;
         }
 
-        return allBooks.filter(book => {
+        return this.state.books.filter(book => {
             return (
                 book.slug.toLowerCase().includes(this.state.searchString) ||
                 book.name.toLowerCase().includes(this.state.searchString)

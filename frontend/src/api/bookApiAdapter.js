@@ -1,16 +1,8 @@
+import axios from 'axios';
+
 export default class BookApiAdapter {
     static getBooks() {
-        return [
-            {
-                slug: "gen",
-                name: "Genesis",
-                index: 1
-            },
-            {
-                slug: "mrk",
-                name: "Mark",
-                index: 6
-            }
-        ]
+        return axios.get('http://0.0.0.0:8000/api/books')
+            .then(res => res.data);
     }
 }
