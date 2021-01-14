@@ -6,9 +6,24 @@ export default class Navbar extends Component {
     constructor(props) {
         super(props);
 
+        this.setProjectsAsState = this.setProjectsAsState.bind(this);
+        this.setUsersAsState = this.setUsersAsState.bind(this);
+
         this.state = {
             selectedTab: ''
         }
+    }
+
+    setProjectsAsState() {
+        this.setState({
+            selectedTab: 'projects'
+        });
+    }
+
+    setUsersAsState() {
+        this.setState({
+            selectedTab: 'users'
+        });
     }
 
     render() {
@@ -17,11 +32,11 @@ export default class Navbar extends Component {
 
         return (
             <nav>
-                <Link className="app-title" to="/projects">Mini Project</Link>
+                <Link className="app-title" to="/projects" onClick={this.setProjectsAsState}>Mini Project</Link>
                 <Link className={"nav-link " + (isProjectsTab ? "selected" : '')} to="/projects"
-                      onClick={() => this.setState({selectedTab: 'projects'})}>PROJECTS</Link>
+                      onClick={this.setProjectsAsState}>PROJECTS</Link>
                 <Link className={"nav-link " + (isUsersTab ? "selected" : '')} to="/users"
-                      onClick={() => this.setState({selectedTab: 'users'})}>USERS</Link>
+                      onClick={this.setUsersAsState}>USERS</Link>
             </nav>
         )
     }
