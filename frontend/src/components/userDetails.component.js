@@ -115,7 +115,7 @@ export default class UserDetails extends Component {
         return (
             <div>
                 <div className="breadcrumb-filter-group">
-                    <u>Users</u> &#8594; <span style={{ color: 'red' }}>{this.state.user.username}</span>
+                    <Link to={'/users'}><u>Users</u></Link> &#8594; <span style={{ color: 'red' }}>{this.state.user.username}</span>
                 </div>
                 <div className="user-details__container">
                     <div className="user-details__names">
