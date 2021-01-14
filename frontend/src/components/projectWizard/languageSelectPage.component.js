@@ -10,8 +10,10 @@ class LanguageSelectPage extends Component {
 
         this.handleCancel = this.handleCancel.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
 
         this.state = {
+            index: 0,
             searchString: '',
             languages: []
         }
@@ -22,14 +24,14 @@ class LanguageSelectPage extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(this.state.searchString !== prevState.searchString) {
+        if (this.state.searchString !== prevState.searchString) {
             this.setLanguagesInState();
         }
     }
 
     setLanguagesInState() {
         LanguageApiAdapter.getFilteredLanguages(this.state.searchString)
-            .then(languages => this.setState({ languages }));
+            .then(languages => this.setState({languages}));
     }
 
     renderLanguages() {
@@ -58,6 +60,22 @@ class LanguageSelectPage extends Component {
         });
     }
 
+    handleScroll(e) {
+        const container = e.target;
+        if (container.offsetHeight + container.scrollTop >= container.scrollHeight) {
+            const newIndex = this.state.index + 10;
+            const languageList = this.state.languages;
+
+            LanguageApiAdapter.getMoreLanguages(newIndex)
+                .then(newLanguages =>
+                    this.setState({
+                        index: newIndex,
+                        languages: languageList.concat(newLanguages)
+                    })
+                );
+        }
+    }
+
     canContinue() {
         return this.props.selectedLanguage !== '';
     }
@@ -67,7 +85,7 @@ class LanguageSelectPage extends Component {
             <>
                 <p className="modal-title">Select Language</p>
                 <input type="text" placeholder="Start typing a language name or code" onChange={this.handleSearch}/>
-                <div className="language-select-list">{this.renderLanguages()}</div>
+                <div className="language-select-list" onScroll={this.handleScroll}>{this.renderLanguages()}</div>
                 <div className="form-control-group-right">
                     <button className="form-button" onClick={this.handleCancel}>
                         <i className="material-icons">clear</i>Cancel
