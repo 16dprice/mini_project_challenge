@@ -12,18 +12,30 @@ class LanguageSelectPage extends Component {
         this.handleSearch = this.handleSearch.bind(this);
 
         this.state = {
-            searchString: ''
+            searchString: '',
+            languages: []
         }
     }
 
-    getFilteredLanguages() {
-        const allLanguages = LanguageApiAdapter.getLanguages();
+    componentDidMount() {
+        this.setLanguagesInState();
+    }
 
+    setLanguagesInState() {
+        LanguageApiAdapter.getLanguages()
+            .then(languages => {
+                this.setState({
+                    languages
+                });
+            });
+    }
+
+    getFilteredLanguages() {
         if(this.state.searchString === '') {
-            return allLanguages;
+            return this.state.languages;
         }
 
-        return allLanguages.filter(language => {
+        return this.state.languages.filter(language => {
             return (
                 language.slug.toLowerCase().includes(this.state.searchString) ||
                 language.original_name.toLowerCase().includes(this.state.searchString) ||

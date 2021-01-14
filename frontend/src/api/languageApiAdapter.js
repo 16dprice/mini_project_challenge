@@ -1,16 +1,8 @@
+import axios from 'axios';
+
 export default class LanguageApiAdapter {
     static getLanguages() {
-        return [
-            {
-                slug: "en",
-                anglicized_name: "English",
-                original_name: "English"
-            },
-            {
-                slug: "es",
-                anglicized_name: "Spanish",
-                original_name: "Espanol"
-            }
-        ]
+        return axios.get('http://0.0.0.0:8000/api/languages')
+            .then(res => res.data);
     }
 }
