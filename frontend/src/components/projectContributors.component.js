@@ -28,7 +28,8 @@ export default class ProjectContributors extends Component {
     }
 
     handleContributorDelete(contributorToBeDeleted) {
-        // TODO: make delete request to delete contributor here
+        ProjectApiAdapter.removeContributorFromProject(this.state.project.id, contributorToBeDeleted.id);
+
         const newContributors = this.state.project.contributors.filter(
             contributor => contributor.id !== contributorToBeDeleted.id
         );

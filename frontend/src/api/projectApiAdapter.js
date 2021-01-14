@@ -51,6 +51,14 @@ export default class ProjectApiAdapter {
         });
     }
 
+    static removeContributorFromProject(projectId, contributorId) {
+        return axios.delete(`http://0.0.0.0:8000/api/projects/${projectId}/contributors`, {
+            data: {
+                contributorId
+            }
+        });
+    }
+
     static projectList() {
         return [
             {
