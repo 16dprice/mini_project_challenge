@@ -47,7 +47,7 @@ export const NewUser = props => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        UserApiAdapter.createNewUser(userName, firstName, lastName)
+        UserApiAdapter.createUser(userName, firstName, lastName)
             .then(res => props.getUserObjects());
         clearState();
         handleClose();

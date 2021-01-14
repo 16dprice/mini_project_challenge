@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export default class ProjectApiAdapter {
     static projectList() {
         return [
@@ -80,5 +82,12 @@ export default class ProjectApiAdapter {
                 return projectHasUserAsContributor;
             }
         );
+    }
+
+    static createProject(bookSlug, languageSlug) {
+        return axios.post('http://0.0.0.0:8000/api/projects/', {
+            bookSlug,
+            languageSlug
+        });
     }
 }

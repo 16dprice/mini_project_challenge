@@ -12,8 +12,7 @@ export default class UserApiAdapter {
                         lastName: user.last_name
                     }
                 });
-            })
-            .catch(err => console.log(err));
+            });
     }
 
     static getUserById(id) {
@@ -28,7 +27,7 @@ export default class UserApiAdapter {
             });
     }
 
-    static createNewUser(userName, firstName, lastName) {
+    static createUser(userName, firstName, lastName) {
         console.log(`Creating user ${firstName} ${lastName} as @${userName}`);
         return axios.post('http://0.0.0.0:8000/api/users/',
             {
