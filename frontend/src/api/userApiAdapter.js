@@ -15,29 +15,6 @@ export default class UserApiAdapter {
             });
     }
 
-    static mockedUserList() {
-        return [
-            {
-                id: "1",
-                username: "lindavasquez",
-                firstName: "Linda",
-                lastName: "Vasquez"
-            },
-            {
-                id: "2",
-                username: "herbert123",
-                firstName: "Herbert",
-                lastName: "Fletcher"
-            },
-            {
-                id: "3",
-                username: "zjohnson",
-                firstName: "Zachary",
-                lastName: "Johnson"
-            },
-        ];
-    }
-
     static getUserById(id) {
         return axios.get(`http://0.0.0.0:8000/api/users/${id}`)
             .then(res => {
@@ -58,5 +35,12 @@ export default class UserApiAdapter {
                 firstName,
                 lastName
             });
+    }
+
+    static updateUser(userId, firstName, lastName) {
+        return axios.patch(`http://0.0.0.0:8000/api/users/${userId}`, {
+            firstName,
+            lastName
+        });
     }
 }

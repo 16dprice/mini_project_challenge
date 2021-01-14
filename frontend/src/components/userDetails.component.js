@@ -53,10 +53,12 @@ export default class UserDetails extends Component {
     }
 
     updateUser(e) {
-        if(this.state.hasEditedUser) {
-            // TODO: make POST request to update user here
-            console.log(this.state.user);
-        }
+        UserApiAdapter.updateUser(
+            this.state.user.id,
+            this.state.user.firstName,
+            this.state.user.lastName
+        )
+            .then(() => this.setUserInState(this.state.user.id))
 
         this.setState({
             editingUser: false,
