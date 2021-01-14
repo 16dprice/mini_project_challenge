@@ -63,10 +63,10 @@ class LanguageSelectPage extends Component {
     handleScroll(e) {
         const container = e.target;
         if (container.offsetHeight + container.scrollTop >= container.scrollHeight) {
-            const currentIndex = this.state.index;
-            this.setState({ index: currentIndex + 10 })
+            const newIndex = this.state.index + 10;
+            this.setState({ index: newIndex })
             const languageList = this.state.languages;
-            LanguageApiAdapter.getMoreLanguages(this.state.index)
+            LanguageApiAdapter.getMoreLanguages(newIndex)
                 .then(newLanguages => 
                     this.setState({ 
                         languages: languageList.concat(newLanguages)
