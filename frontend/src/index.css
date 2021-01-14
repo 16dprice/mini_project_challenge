@@ -50,6 +50,7 @@ nav .nav-link {
     justify-content: center;
     align-items: center;
     font-size: 17px;
+    border-radius: 0;
 }
 
 .nav-link.current {
