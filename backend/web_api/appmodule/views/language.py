@@ -21,16 +21,16 @@ def languages(request):
             result = languages
         else:
             result = Language.objects.filter(
-                Q(anglicized_name__contains=query) | Q(
-                    original_name__contains=query)
+                Q(anglicized_name__contains=query) | Q(original_name__contains=query)
             )[:LANGUAGE_TAKE_LIMIT]
 
         serializerObject = LanguageSerializer(result, many=True)
 
         return Response(serializerObject.data)
     else:
-        index = int(request.query_params.get('index', 0))
-        upperLimit = index + LANGUAGE_TAKE_LIMIT
-        languages = Language.objects.all()[index:upperLimit]
+        pageIndex = int(request.query_params.get('index', 0))
+        takeFrom = pageIndex * LANGUAGE_TAKE_LIMIT
+        takeUpTo = takeFrom + LANGUAGE_TAKE_LIMIT
+        languages = Language.objects.all()[takeFrom:takeUpTo]
         serializerObject = LanguageSerializer(languages, many=True)
         return Response(serializerObject.data)
