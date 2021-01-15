@@ -10,7 +10,7 @@ export default class UsersList extends Component {
     constructor(props) {
         super(props);
 
-        this.getUserObjects = this.getUserObjects.bind(this);
+        this.setUserObjects = this.setUserObjects.bind(this);
 
         this.state = {
             users: []
@@ -18,10 +18,10 @@ export default class UsersList extends Component {
     }
 
     componentDidMount() {
-        this.getUserObjects();
+        this.setUserObjects();
     }
 
-    getUserObjects() {
+    setUserObjects() {
         UserApiAdapter.userList().then(data => {
             this.setState({
                 users: data
@@ -30,7 +30,7 @@ export default class UsersList extends Component {
     }
 
     getNewUserCard() {
-        return <Card key="new" content={ <NewUser getUserObjects={this.getUserObjects} /> } />;
+        return <Card key="new" content={ <NewUser setUserObjects={this.setUserObjects} /> } />;
     }
 
     getUserCards() {

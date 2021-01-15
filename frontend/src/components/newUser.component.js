@@ -48,9 +48,17 @@ export const NewUser = props => {
         event.preventDefault();
 
         UserApiAdapter.createUser(userName, firstName, lastName)
-            .then(res => props.getUserObjects());
-        clearState();
-        handleClose();
+            .then(_ => props.setUserObjects())
+            .catch(error => {
+                const errorResponseCode = error.response.status;
+
+                if(errorResponseCode === 409) {
+                    alert(`User with username "${userName}" already exists.`);
+                } else {
+                    clearState();
+                    handleClose();
+                }
+            });
     };
 
     const handleCancel = (event) => {
