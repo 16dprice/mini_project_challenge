@@ -70,7 +70,8 @@
 }
 
 .project-details__contributor-names {
-    height: 70%;
+    height: 66%;
+    margin-bottom: 10px;
     overflow-y: auto;
 }
 
@@ -93,7 +94,6 @@
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
-    margin-top: 8px;
     border-radius: 5px;
     border: none;    
     cursor: pointer;
