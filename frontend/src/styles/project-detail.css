@@ -104,4 +104,5 @@
     min-height: 100px;
     max-height: 250px;
     overflow-y: auto;
+    margin-bottom: 10px;
 }
