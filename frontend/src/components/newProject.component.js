@@ -1,10 +1,12 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import ProjectForm from "./projectWizard/projectForm.component";
 import {makeStyles} from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import '../styles/create-project-wizard.css'
+import '../styles/create-project-wizard.css';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer} from "react-notifications";
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -35,6 +37,7 @@ export const NewProject = props => {
 
     return (
         <>
+            <NotificationContainer />
             <span className="new-card" onClick={handleOpen}>
                 <i className="material-icons">book</i>
                 New Project

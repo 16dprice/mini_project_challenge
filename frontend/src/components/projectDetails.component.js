@@ -3,7 +3,7 @@ import ProjectApiAdapter from "../api/projectApiAdapter";
 import ProjectDescription from "./projectDescription.component";
 import ProjectContributors from "./projectContributors.component";
 import { Link } from 'react-router-dom';
-import '../styles/project-detail.css'
+import '../styles/project-detail.css';
 
 export default class ProjectDetails extends Component {
 

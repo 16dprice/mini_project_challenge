@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import UserApiAdapter from "../api/userApiAdapter";
 import ProjectApiAdapter from "../api/projectApiAdapter";
 import '../styles/user-detail.css'
+import 'react-notifications/lib/notifications.css';
+import {NotificationManager, NotificationContainer} from "react-notifications";
 
 export default class UserDetails extends Component {
 
@@ -56,13 +58,23 @@ export default class UserDetails extends Component {
         });
     }
 
+    createUserUpdateSuccessNotification() {
+        return NotificationManager.success(
+            `User "${this.state.user.username}" updated to "${this.state.user.firstName} ${this.state.user.lastName}".`,
+            'User Updated'
+        )
+    }
+
     updateUser(e) {
         UserApiAdapter.updateUser(
             this.state.user.id,
             this.state.user.firstName,
             this.state.user.lastName
         )
-            .then(() => this.setUserInState(this.state.user.id))
+            .then(() => {
+                this.createUserUpdateSuccessNotification()
+                this.setUserInState(this.state.user.id)
+            })
 
         this.setState({
             editingUser: false,
@@ -114,6 +126,7 @@ export default class UserDetails extends Component {
     render() {
         return (
             <div>
+                <NotificationContainer />
                 <div className="breadcrumb-filter-group">
                     <Link to={'/users'}><u>Users</u></Link> &#8594; <span style={{ color: 'red' }}>{this.state.user.username}</span>
                 </div>

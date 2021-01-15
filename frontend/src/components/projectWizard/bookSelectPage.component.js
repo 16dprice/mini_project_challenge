@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {selectBook, deselectBook, deselectLanguage} from "../../actions/projectCreationActions";
 import BookApiAdapter from "../../api/bookApiAdapter";
 import ProjectApiAdapter from "../../api/projectApiAdapter";
+import {NotificationManager} from "react-notifications";
 
 class BookSelectPage extends Component {
 
@@ -63,9 +64,17 @@ class BookSelectPage extends Component {
         this.props.handleClose();
     }
 
+    createProjectCreationSuccessNotification() {
+        return NotificationManager.success(
+            'Project created successfully.',
+            'Project Created'
+        )
+    }
+
     handleCreate() {
         ProjectApiAdapter.createProject(this.props.selectedBook, this.props.selectedLanguage)
             .then(_ => {
+                this.createProjectCreationSuccessNotification();
                 this.props.setProjectsListState();
             });
 
