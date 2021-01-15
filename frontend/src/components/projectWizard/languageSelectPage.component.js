@@ -15,6 +15,7 @@ class LanguageSelectPage extends Component {
         this.state = {
             index: 0,
             searchString: '',
+            searching: false,
             languages: []
         }
     }
@@ -30,6 +31,11 @@ class LanguageSelectPage extends Component {
     }
 
     setLanguagesInState() {
+        const isSearching = this.state.searchString !== '';
+        this.setState({
+            searching: isSearching
+        });
+
         LanguageApiAdapter.getFilteredLanguages(this.state.searchString)
             .then(languages => this.setState({languages}));
     }
@@ -61,6 +67,8 @@ class LanguageSelectPage extends Component {
     }
 
     handleScroll(e) {
+        if(this.state.searching) return;
+
         const container = e.target;
         if (container.offsetHeight + container.scrollTop >= container.scrollHeight) {
             const newIndex = this.state.index + 1;
