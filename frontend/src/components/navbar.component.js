@@ -14,6 +14,21 @@ export default class Navbar extends Component {
         }
     }
 
+    componentDidMount() {
+        const currentPath = window.location.pathname;
+
+        switch(currentPath) {
+            case '/projects':
+                this.setProjectsAsState();
+                break;
+            case '/users':
+                this.setUsersAsState();
+                break;
+            default:
+                this.setState({selectedTab: ''});
+        }
+    }
+
     setProjectsAsState() {
         this.setState({
             selectedTab: 'projects'
