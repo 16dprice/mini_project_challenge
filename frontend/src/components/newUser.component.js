@@ -4,6 +4,8 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import '../styles/modal.css'
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import UserApiAdapter from "../api/userApiAdapter";
 
@@ -44,16 +46,37 @@ export const NewUser = props => {
         setLastName('');
     };
 
+    const createUserCreationSuccessNotification = () => {
+        return NotificationManager.success(
+            `User with username "${userName}" created successfully.`,
+            'User Created'
+        )
+    }
+
+    const createUsernameConflictNotification = () => {
+        return NotificationManager.error(
+            `User with username "${userName}" already exists.`,
+            'User Not Created',
+            5000
+        )
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
         UserApiAdapter.createUser(userName, firstName, lastName)
-            .then(_ => props.setUserObjects())
+            .then(_ => {
+                props.setUserObjects()
+
+                createUserCreationSuccessNotification();
+                clearState();
+                handleClose();
+            })
             .catch(error => {
                 const errorResponseCode = error.response.status;
 
-                if(errorResponseCode === 409) {
-                    alert(`User with username "${userName}" already exists.`);
+                if (errorResponseCode === 409) {
+                    createUsernameConflictNotification();
                 } else {
                     clearState();
                     handleClose();
@@ -69,7 +92,7 @@ export const NewUser = props => {
     };
 
     useEffect(() => {
-            if(userName.length === 0 || firstName.length === 0 || lastName.length === 0) {
+            if (userName.length === 0 || firstName.length === 0 || lastName.length === 0) {
                 setSubmitEnabled(false);
             } else {
                 setSubmitEnabled(true);
@@ -79,6 +102,7 @@ export const NewUser = props => {
 
     return (
         <>
+            <NotificationContainer />
             <span className="new-card" onClick={handleOpen}>
                 <i className="material-icons">person_add</i>
                 New User
@@ -96,22 +120,23 @@ export const NewUser = props => {
                     <form className={classes.paper} onSubmit={handleSubmit}>
                         <p id="new-user-modal-title" className="modal-title">Create User</p>
                         <div>
-                            <input type="text" onChange={e => setUserName(e.target.value)} 
-                                value={userName} placeholder="Enter username"/>
+                            <input type="text" onChange={e => setUserName(e.target.value)}
+                                   value={userName} placeholder="Enter username"/>
                         </div>
                         <div>
-                            <input type="text" onChange={e => setFirstName(e.target.value)} 
-                                value={firstName} placeholder="Enter First Name"/>
+                            <input type="text" onChange={e => setFirstName(e.target.value)}
+                                   value={firstName} placeholder="Enter First Name"/>
                         </div>
                         <div>
-                            <input type="text" onChange={e => setLastName(e.target.value)} 
-                                value={lastName} placeholder="Enter Last Name"/>
+                            <input type="text" onChange={e => setLastName(e.target.value)}
+                                   value={lastName} placeholder="Enter Last Name"/>
                         </div>
                         <div className="form-control-group">
                             <button className="form-button" onClick={handleCancel}>
                                 <i className="material-icons">clear</i>Cancel
                             </button>
-                            <input id="submitButton" className="form-button" type="submit" value="Create" disabled={!submitEnabled}/>
+                            <input id="submitButton" className="form-button" type="submit" value="Create"
+                                   disabled={!submitEnabled}/>
                         </div>
                     </form>
                 </Fade>
