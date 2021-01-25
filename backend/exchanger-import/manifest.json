@@ -1,0 +1,373 @@
+{
+    "language": {
+        "slug": "hi",
+        "name": "\u0939\u093f\u0928\u094d\u0926\u0940, \u0939\u093f\u0902\u0926\u0940"
+    },
+    "book": {
+        "slug": "1th",
+        "name": "1 Thessalonians",
+        "number": 53
+    },
+    "version": {
+        "slug": "ulb",
+        "name": "unlocked literal bible"
+    },
+    "anthology": {
+        "slug": "nt",
+        "name": "new testament"
+    },
+    "mode": {
+        "slug": "verse",
+        "name": "verse",
+        "type": "SINGLE"
+    },
+    "users": [{
+        "id": 5,
+        "icon_hash": "eaa104ed1940213c8ed0ed7cc3b3708c",
+        "name_audio": "c2e45171-f7d7-4861-9dfa-b110a01e92dc",
+        "location": "media/dump/name_audios/c2e45171-f7d7-4861-9dfa-b110a01e92dc"
+    }],
+    "manifest": [{
+        "chapter": 5,
+        "checking_level": 0,
+        "published": false,
+        "chunks": [{
+            "startv": 1,
+            "endv": 1,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v01_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v01_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 2,
+            "endv": 2,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v02_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v02_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 3,
+            "endv": 3,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v03_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v03_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 4,
+            "endv": 4,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v04_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v04_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 5,
+            "endv": 5,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v05_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v05_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 6,
+            "endv": 6,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v06_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v06_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 7,
+            "endv": 7,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v07_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v07_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 8,
+            "endv": 8,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v08_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v08_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 9,
+            "endv": 9,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v09_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v09_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 10,
+            "endv": 10,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v10_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v10_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 11,
+            "endv": 11,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v11_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v11_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 12,
+            "endv": 12,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v12_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v12_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 13,
+            "endv": 13,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v13_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v13_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 14,
+            "endv": 14,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v14_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v14_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 15,
+            "endv": 15,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v15_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v15_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 16,
+            "endv": 16,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v16_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v16_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 17,
+            "endv": 17,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v17_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v17_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 18,
+            "endv": 18,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v18_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v18_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 19,
+            "endv": 19,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v19_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v19_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 20,
+            "endv": 20,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v20_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v20_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 21,
+            "endv": 21,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v21_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v21_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 22,
+            "endv": 22,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v22_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v22_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 23,
+            "endv": 23,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v23_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v23_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 24,
+            "endv": 24,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v24_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v24_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 25,
+            "endv": 25,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v25_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v25_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 26,
+            "endv": 26,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v26_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v26_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 27,
+            "endv": 27,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v27_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v27_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }, {
+            "startv": 28,
+            "endv": 28,
+            "comments": [],
+            "takes": [{
+                "name": "hi_ulb_b52_1th_c05_v28_t01.wav",
+                "location": "media/dump/1600863410.8489316291bf34f-45d8-4409-98fa-34cf372840e6/hi_ulb_b52_1th_c05_v28_t01.wav",
+                "rating": 3,
+                "published": true,
+                "user_id": 5,
+                "comments": []
+            }]
+        }],
+        "comments": []
+    }]
+}
