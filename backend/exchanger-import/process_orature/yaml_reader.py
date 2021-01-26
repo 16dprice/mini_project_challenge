@@ -7,18 +7,18 @@ class OratureYamlConverter:
     def __init__(self, yaml_file):
         self.manifest = yaml.load(yaml_file, Loader=yaml.FullLoader)
 
-    def get_json(self):
+    def get_content(self):
         json_data = {
-            "language": self.get_json_language(),
-            "book": self.get_json_book(),
-            "version": self.get_json_version(),
-            "anthology": self.get_json_anthology(),
-            "mode": self.get_json_mode()
+            "language": self.get_language(),
+            "book": self.get_book(),
+            "version": self.get_version(),
+            "anthology": self.get_anthology(),
+            "mode": self.get_mode()
         }
 
         return json_data
 
-    def get_json_language(self):
+    def get_language(self):
         yaml_language = {
             "slug": self.manifest["dublin_core"]["language"]["identifier"],
             "name": self.manifest["dublin_core"]["language"]["title"]
@@ -26,7 +26,7 @@ class OratureYamlConverter:
 
         return yaml_language
 
-    def get_json_book(self):
+    def get_book(self):
         book = get_book(self.manifest["projects"][0]["identifier"])
         yaml_book = {
             "slug": book["slug"],
@@ -36,7 +36,7 @@ class OratureYamlConverter:
 
         return yaml_book
 
-    def get_json_version(self):
+    def get_version(self):
         yaml_version = {
             "slug": self.manifest["dublin_core"]["identifier"],
             "name": self.manifest["dublin_core"]["title"]
@@ -44,7 +44,7 @@ class OratureYamlConverter:
 
         return yaml_version
 
-    def get_json_anthology(self):
+    def get_anthology(self):
         book = get_book(self.manifest["projects"][0]["identifier"])
         yaml_anthology = {
             "slug": book["anth"],
@@ -53,13 +53,12 @@ class OratureYamlConverter:
 
         return yaml_anthology
 
-    def get_json_mode(self):
+    def get_mode(self):
         return {
             "slug": "verse",
             "name": "verse",
             "type": "SINGLE"
         }
-
 
 # test_yaml_file = open(r'E:\miscs\exported\vi-ulb-sng-20210122-1027\manifest.yaml')
 
