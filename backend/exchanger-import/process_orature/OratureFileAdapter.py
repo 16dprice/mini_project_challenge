@@ -138,7 +138,7 @@ class OratureFileAdapter:
 
         manifest = {}
         with open(os.path.join(self._root, 'manifest.yaml'), 'r') as yaml_file:
-            manifest = OratureYamlConverter(yaml_file).get_json()
+            manifest = OratureYamlConverter(yaml_file).get_content()
 
         manifest["users"] = []
         manifest["manifest"] = self._build_media_manifest(selected_takes)
